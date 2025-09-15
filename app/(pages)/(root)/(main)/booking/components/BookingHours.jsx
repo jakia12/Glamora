@@ -1,0 +1,66 @@
+import Link from "next/link";
+
+const hours = [
+  { day: "Mon to Friday", time: "7:30 am — 1:00 am" },
+  { day: "Saturday", time: "7:30 am — 1:00 am" },
+  { day: "Wednesday", time: "7:30 am — 1:00 am" },
+];
+
+export default function BookingHours() {
+  return (
+    <section className="booking-hours-area bg-light-gray rel z-1">
+      {/* Left Image */}
+      <div
+        className="booking-hour-image"
+        style={{
+          backgroundImage: "url(/assets/images/booking/booking-page.jpg)",
+        }}
+      ></div>
+
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-6 offset-lg-6">
+            <div className="booking-hours-content py-150 rpt-0 rpb-100 wow fadeInLeft delay-0-2s">
+              {/* Section Title */}
+              <div className="section-title mb-30">
+                <span className="bg-text">menus</span>
+                <span className="sub-title">Hair Salon</span>
+                <h2>Working Hours</h2>
+              </div>
+
+              <p>
+                Sed ut perspiciatis unde omnis iste natus voluptatem accusantium
+                doloremque laudantium totam aperiame eaque quae abillo inventore
+                veritatis
+              </p>
+
+              {/* Hours List */}
+              <ul className="booking-hours py-20 wow fadeInRight delay-0-2s">
+                {hours.map((item, i) => (
+                  <li key={i}>
+                    <span className="date">{item.day}</span>{" "}
+                    <span className="symbol">:</span>{" "}
+                    <span className="time">{item.time}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* CTA Button */}
+              <Link href="/booking" className="theme-btn style-two">
+                booking now <i className="fas fa-long-arrow-alt-right"></i>
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Decorative Elements */}
+      <div className="booking-circle">
+        <img src="/assets/images/shapes/booking-circle.jpg" alt="Circle" />
+      </div>
+      <div className="booking-bg-icon">
+        <i className="flaticon-hair-iron"></i>
+      </div>
+    </section>
+  );
+}
