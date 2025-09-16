@@ -129,14 +129,9 @@ export default function Footer() {
             <li>
               <Link href="#">Services</Link>
             </li>
+
             <li>
-              <Link href="#">Faqs</Link>
-            </li>
-            <li>
-              <Link href="#">My Account</Link>
-            </li>
-            <li>
-              <Link href="#">Privacy</Link>
+              <Link href="/">Privacy</Link>
             </li>
           </ul>
           <p>© 2025 Glamora, All Rights Reserved</p>
