@@ -14,9 +14,9 @@ export default function BookingForm() {
         <div className="row justify-content-center">
           <div className="col-md-8">
             <div className="section-title text-center mb-45">
-              <span className="bg-text">Booking</span>
-              <span className="sub-title">Booking Seat</span>
-              <h2>Make Appointment</h2>
+              <span className="bg-text danR">Booking</span>
+              <span className="sub-title Mont">Booking Seat</span>
+              <h2 className="Mont">Make Appointment</h2>
             </div>
           </div>
         </div>

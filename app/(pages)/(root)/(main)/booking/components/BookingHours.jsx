@@ -13,7 +13,7 @@ export default function BookingHours() {
       <div
         className="booking-hour-image"
         style={{
-          backgroundImage: "url(/assets/images/booking/booking-page.jpg)",
+          backgroundImage: "url(/images/book.jpg)",
         }}
       ></div>
 
@@ -23,12 +23,12 @@ export default function BookingHours() {
             <div className="booking-hours-content py-150 rpt-0 rpb-100 wow fadeInLeft delay-0-2s">
               {/* Section Title */}
               <div className="section-title mb-30">
-                <span className="bg-text">menus</span>
-                <span className="sub-title">Hair Salon</span>
-                <h2>Working Hours</h2>
+                <span className="bg-text danR">menus</span>
+                <span className="sub-title Mont">Hair Salon</span>
+                <h2 className="Mont">Working Hours</h2>
               </div>
 
-              <p>
+              <p className="para mb-30 wow fadeInRight delay-0-2s">
                 Sed ut perspiciatis unde omnis iste natus voluptatem accusantium
                 doloremque laudantium totam aperiame eaque quae abillo inventore
                 veritatis
@@ -55,9 +55,7 @@ export default function BookingHours() {
       </div>
 
       {/* Decorative Elements */}
-      <div className="booking-circle">
-        <img src="/assets/images/shapes/booking-circle.jpg" alt="Circle" />
-      </div>
+
       <div className="booking-bg-icon">
         <i className="flaticon-hair-iron"></i>
       </div>

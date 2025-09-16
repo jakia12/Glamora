@@ -38,12 +38,20 @@ export default function AboutPageSection() {
         <div className="row">
           <div className="col-md-6">
             <div className="about-page-left mb-30 wow fadeInUp delay-0-2s">
-              <img src="/images/about/about-page-left.webp" alt="About" />
+              <img
+                src="/images/about/about-page-left.webp"
+                alt="About"
+                className="abtImg"
+              />
             </div>
           </div>
           <div className="col-md-6">
             <div className="about-page-left mb-30 wow fadeInUp delay-0-2s">
-              <img src="/images/about/about-page-right.webp" alt="About" />
+              <img
+                src="/images/about/about-page-right.webp"
+                alt="About"
+                className="abtImg"
+              />
             </div>
           </div>
         </div>

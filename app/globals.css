@@ -10545,6 +10545,109 @@ textarea.form-control {
   padding: 146px inherit;
   margin: 20px 0 34px;
 }
+
+/* about image */
+
+.abtImg {
+  box-shadow: 0 6px 13px #c6c1c1;
+  border: 1px solid #0000001f;
+}
+
+.category-item.style-two {
+  background: #fff;
+  padding: 40px 38px;
+  box-shadow: 10px 4px 60px rgba(0, 0, 0, 0.1);
+  border: 1px solid #0000003d;
+}
+
+img {
+  border-radius: 8px;
+}
+
+.popular-service-item i {
+  -o-transition: 0.5s;
+  color: #d6b981;
+  margin-bottom: 10px;
+  font-size: 65px;
+  line-height: 1;
+  transition: all 0.5s;
+  display: none !important;
+}
+.popular-service-item {
+  -o-transition: 0.5s;
+  text-align: center;
+  background: #f7f7f7;
+  border: 1px solid rgba(214, 185, 129, 0.2);
+  margin-bottom: 30px;
+  padding: 30px 5px;
+  transition: all 0.5s;
+  display: block;
+  color: black;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 24px 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--bs-body-bg);
+  background-clip: padding-box;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.offer-item h5 {
+  -o-transition: 0.5s;
+  margin-bottom: 0;
+  font-size: 20px;
+  transition: all 0.5s;
+  color: #000;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 22px 0.75rem !important;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--bs-body-color);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: var(--bs-body-bg);
+  background-clip: padding-box;
+  border: var(--bs-border-width) solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.category-item {
+  z-index: 1;
+  text-align: center;
+  margin-bottom: 76px;
+  padding: 59px 16px;
+  position: relative;
+}
+.footer-widget ul,
+.title-meta ul {
+  padding-left: 0 !important;
+}
+
+.hid {
+  display: block;
+}
+
+#mobile-menu {
+  padding-top: 25px;
+  padding-left: 16px;
+}
 @media (min-width: 992px) {
   /* open dropdowns on hover for desktop */
   .navigation > .dropdown:hover > .dropdown-menu {
@@ -10555,5 +10658,14 @@ textarea.form-control {
 @media (max-width: 768px) {
   .hidd {
     display: none !important;
+  }
+  .hid {
+    display: none !important;
+  }
+  .hero-section {
+    padding: 23px 0;
+  }
+  .overflw {
+    overflow: hidden !important;
   }
 }

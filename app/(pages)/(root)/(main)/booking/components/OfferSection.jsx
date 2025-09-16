@@ -17,9 +17,9 @@ export default function OfferSection() {
         <div className="row justify-content-center">
           <div className="col-xl-8 col-lg-9 col-md-10">
             <div className="section-title mb-65">
-              <span className="bg-text">Offer</span>
-              <span className="sub-title">Who We Offer</span>
-              <h2>Quality &amp; Natural Spa Salon</h2>
+              <span className="bg-text danR">Offer</span>
+              <span className="sub-title Mont">Who We Offer</span>
+              <h2 className="Mont">Quality &amp; Natural Spa Salon</h2>
             </div>
           </div>
         </div>

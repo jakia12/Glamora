@@ -74,7 +74,7 @@ export default function Header() {
 
         {/* Right: Book Now + Hamburger */}
         <div className="flex items-center gap-3">
-          <Link href="/booking" className="theme-btn style-two">
+          <Link href="/booking" className="theme-btn style-two hid">
             Book Now <i className="fas fa-long-arrow-alt-right"></i>
           </Link>
 
@@ -84,7 +84,7 @@ export default function Header() {
             aria-controls="mobile-menu"
             aria-expanded={open}
             onClick={() => setOpen(true)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/40 text-white hover:bg-white/10 md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-white/40 text-black hover:bg-white/10 md:hidden"
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
               <path
@@ -114,16 +114,16 @@ export default function Header() {
         role="dialog"
         aria-modal="true"
         aria-label="Main menu"
-        className={`h-[100vh] z-[100000000] fixed inset-y-0 left-0  w-full max-w-[100%] transform bg-[#102039] shadow-2xl transition-transform duration-300 pl-[20px] pr-[20px] md:hidden ${
+        className={`h-[100vh] z-[100000000] overflow-y-hidden overflw fixed inset-y-0 left-0  w-full max-w-[100%] transform bg-[#D6B981] shadow-2xl transition-transform duration-300 pl-[20px] pr-[20px] md:hidden ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
         <div className="flex items-center justify-between border-b border-white/30 px-4 py-3">
-          <span className="text-[22px] font-semibold text-white">Menu</span>
+          <span className="text-[22px] font-semibold text-black">Menu</span>
           <button
             aria-label="Close menu"
             onClick={() => setOpen(false)}
-            className="grid h-10 w-10 place-items-center rounded-lg border text-white hover:text-[#00C5C4]"
+            className="grid h-10 w-10 place-items-center rounded-lg border border-black text-black hover:text-[#00C5C4]"
           >
             <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
               <path
@@ -142,7 +142,7 @@ export default function Header() {
               key={n.label}
               href={n.href}
               onClick={() => setOpen(false)}
-              className="block rounded-lg px-3 py-2 text-white hover:text-[#00C5C4] text-[22px]"
+              className="block rounded-lg px-3 py-2 text-black hover:text-[#00C5C4] text-[22px]"
             >
               {n.label}
             </Link>

@@ -23,7 +23,10 @@ export default function HeroSection() {
 
       <div
         className="hero-right-image"
-        style={{ backgroundImage: "url(/images/banner.jpg)" }}
+        style={{
+          backgroundImage: "url(/images/banner.jpg)",
+          backgroundPosition: "center center",
+        }}
       ></div>
     </section>
   );

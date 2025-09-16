@@ -2,7 +2,10 @@ export default function AboutBanner() {
   return (
     <section
       className="page-banner text-white py-165 rpy-130"
-      style={{ backgroundImage: "url(/images/about/page-banner.webp)" }}
+      style={{
+        backgroundImage: "url(/images/pban.png)",
+        backgroundPosition: "top center",
+      }}
     >
       <div className="container">
         <div className="banner-inner">

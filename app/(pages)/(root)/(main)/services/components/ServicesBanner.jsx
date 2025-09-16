@@ -3,13 +3,16 @@ export default function ServicesBanner() {
     <section
       className="page-banner text-white py-165 rpy-130"
       style={{
-        backgroundImage: "url(/images/about/page-banner.webp)",
+        backgroundImage: "url(/images/pban.png)",
+        backgroundPosition: "top center",
       }}
     >
       <div className="container">
         <div className="banner-inner text-center">
           <span className="bg-text danR">services</span>
-          <h1 className="page-title wow fadeInUp delay-0-2s">Our services</h1>
+          <h1 className="page-title wow fadeInUp delay-0-2s Mont">
+            Our services
+          </h1>
           {/* <nav aria-label="breadcrumb">
             <ol className="breadcrumb wow fadeInUp delay-0-4s">
               <li className="breadcrumb-item">
