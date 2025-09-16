@@ -49,7 +49,10 @@ export default function PopularServices() {
                 ))}
               </div>
 
-              <Link href="/booking" className="theme-btn mt-30">
+              <Link
+                href="/booking"
+                className="theme-btn mt-30 z-[999999999] cursor-pointer"
+              >
                 make appointment <i className="fas fa-long-arrow-alt-right"></i>
               </Link>
             </div>

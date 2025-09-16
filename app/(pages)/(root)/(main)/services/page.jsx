@@ -5,7 +5,7 @@ import ServicesPageSection from "./components/ServicesPageSection";
 
 const ServicesPage = () => {
   return (
-    <div>
+    <div className="relative z-[-1]">
       <ServicesBanner />
       <ServicesPageSection />
       <CounterSection />

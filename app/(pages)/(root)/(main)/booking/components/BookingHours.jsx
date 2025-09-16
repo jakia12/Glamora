@@ -8,16 +8,17 @@ const hours = [
 
 export default function BookingHours() {
   return (
-    <section className="booking-hours-area bg-light-gray rel z-1">
+    <section className="booking-hours-area bg-light-gray rel zndx">
       {/* Left Image */}
       <div
         className="booking-hour-image"
         style={{
           backgroundImage: "url(/images/book.jpg)",
+          backgroundPosition: "bottom center",
         }}
       ></div>
 
-      <div className="container">
+      <div className="container zndx">
         <div className="row">
           <div className="col-lg-6 offset-lg-6">
             <div className="booking-hours-content py-150 rpt-0 rpb-100 wow fadeInLeft delay-0-2s">
@@ -29,9 +30,9 @@ export default function BookingHours() {
               </div>
 
               <p className="para mb-30 wow fadeInRight delay-0-2s">
-                Sed ut perspiciatis unde omnis iste natus voluptatem accusantium
-                doloremque laudantium totam aperiame eaque quae abillo inventore
-                veritatis
+                At our salon, your beauty and relaxation come first. Whether
+                it’s a quick touch-up during the week or a weekend self-care
+                session, our doors are always open to welcome you.
               </p>
 
               {/* Hours List */}

@@ -1,6 +1,6 @@
 export default function AboutPageSection() {
   return (
-    <section className="about-page-section rel z-2 pt-140 rpt-90">
+    <section className="about-page-section rel z-[-1] pt-140 rpt-90">
       <div className="container">
         {/* Top Row */}
         <div className="row mb-55">
@@ -18,17 +18,18 @@ export default function AboutPageSection() {
           <div className="col-lg-7">
             <div className="about-page-right-text wow fadeInRight delay-0-2s">
               <p className="para">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium totam rem aperia eaque ipsa
-                quae abillo inventore veritatis quasi architecto beatae vitae
-                dicta sunt explicabo. Nemo enim quia voluptas sit aspernatur aut
-                odit aut fugit sed consequuntur magni dolores eos qui ratione
-                voluptatem sequi nesciunt porro quisquam
+                At Glamora, we believe beauty is more than appearance—it’s an
+                experience of relaxation, confidence, and care. Our mission is
+                to bring out your natural glow with treatments that combine
+                luxury, comfort, and expertise. From soothing facials and
+                rejuvenating spa therapies to professional hair and beauty
+                services, our team of skilled specialists is dedicated to
+                creating an environment where you can truly unwind.
               </p>
               <p className="para">
-                Nemo enim quia voluptas sit aspernatur aut odit aut fugit sed
-                consequuntur magni dolores ratione voluptatem sequi nesciunt
-                quisquam
+                With years of experience, premium products, and a passion for
+                perfection, we make every visit a moment of self-care you’ll
+                treasure.
               </p>
             </div>
           </div>

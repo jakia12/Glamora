@@ -16,13 +16,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Glamora - Redefining Beauty & Elegance",
-  description:
-    "Glamora is your destination for beauty and self-care, offering professional salon services that enhance your natural glow.",
+  title: "Glamora – Beauty & Wellness",
+  description: "Discover luxury salon & spa services with Glamora.",
   icons: {
-    icon: "/images/fav.png",
+    icon: "/images/fav.png", // Default
     shortcut: "/images/fav.png",
     apple: "/images/fav.png",
+  },
+  openGraph: {
+    title: "Glamora – Beauty & Wellness",
+    description: "Indulge in premium beauty, spa, and salon experiences.",
+    url: "https://yourdomain.com",
+    siteName: "Glamora",
+    images: [
+      {
+        url: "/images/openfav.jpg", // absolute URL to your image
+        width: 1200,
+        height: 630,
+        alt: "Glamora Spa & Salon Preview",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
   },
 };
 

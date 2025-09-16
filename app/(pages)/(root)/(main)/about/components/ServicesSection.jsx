@@ -34,7 +34,7 @@ export default function ServicesSection() {
               </Link>
             </h4>
           </div>
-          <p>Quis autem velum reprender eoluptate velit esse</p>
+          <p>Bright colors, smooth finish, lasting shine.</p>
           <Link href="/service-details" className="read-more">
             read more <i className="fas fa-long-arrow-alt-right"></i>
           </Link>
@@ -55,7 +55,7 @@ export default function ServicesSection() {
               </Link>
             </h4>
           </div>
-          <p>Quis autem velum reprender eoluptate velit esse</p>
+          <p>Perfectly shaped brows, naturally defined.</p>
           <Link href="/service-details" className="read-more">
             read more <i className="fas fa-long-arrow-alt-right"></i>
           </Link>
@@ -76,7 +76,7 @@ export default function ServicesSection() {
               </Link>
             </h4>
           </div>
-          <p>Quis autem velum reprender eoluptate velit esse</p>
+          <p>Trendy cuts, flawless styles, everyday glam.</p>
           <Link href="/service-details" className="read-more">
             read more <i className="fas fa-long-arrow-alt-right"></i>
           </Link>
@@ -97,7 +97,7 @@ export default function ServicesSection() {
               </Link>
             </h4>
           </div>
-          <p>Quis autem velum reprender eoluptate velit esse</p>
+          <p>Relax, refresh, and feel light on your feet.</p>
           <Link href="/service-details" className="read-more">
             read more <i className="fas fa-long-arrow-alt-right"></i>
           </Link>
@@ -118,7 +118,7 @@ export default function ServicesSection() {
               </Link>
             </h4>
           </div>
-          <p>Quis autem velum reprender eoluptate velit esse</p>
+          <p>Glow naturally with premium beauty essentials.</p>
           <Link href="/service-details" className="read-more">
             read more <i className="fas fa-long-arrow-alt-right"></i>
           </Link>

@@ -10,25 +10,22 @@ export default function Footer() {
           {/* About */}
           <div className="col-lg-3 col-sm-6">
             <div className="footer-widget menu-widget">
-              <h4 className="footer-title Mont">About</h4>
+              <h4 className="footer-title Mont">Menus</h4>
               <ul>
                 <li>
-                  <Link href="#">Success Story</Link>
+                  <Link href="/">Home</Link>
                 </li>
                 <li>
-                  <Link href="#">Latest Services</Link>
+                  <Link href="/about">About</Link>
                 </li>
                 <li>
-                  <Link href="#">Team Members</Link>
+                  <Link href="/services">Services</Link>
                 </li>
                 <li>
-                  <Link href="#">Popular News</Link>
+                  <Link href="/contact">Contact</Link>
                 </li>
                 <li>
-                  <Link href="#">Awards Winning</Link>
-                </li>
-                <li>
-                  <Link href="#">About Company</Link>
+                  <Link href="/booking">Booking</Link>
                 </li>
               </ul>
             </div>

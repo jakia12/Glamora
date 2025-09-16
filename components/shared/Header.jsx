@@ -114,7 +114,7 @@ export default function Header() {
         role="dialog"
         aria-modal="true"
         aria-label="Main menu"
-        className={`h-[100vh] z-[100000000] overflow-y-hidden overflw fixed inset-y-0 left-0  w-full max-w-[100%] transform bg-[#D6B981] shadow-2xl transition-transform duration-300 pl-[20px] pr-[20px] md:hidden ${
+        className={`h-[100vh] z-[100000000] overflow-y-hidden overflow-x-hidden fixed inset-y-0 left-0 bottom-0 w-full max-w-[100%] transform bg-[#D6B981] shadow-2xl transition-transform duration-300 pl-[20px] pr-[20px] md:hidden ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -149,7 +149,11 @@ export default function Header() {
           ))}
 
           <div className="mt-3 pt-3">
-            <Link href="/booking" className="theme-btn style-two">
+            <Link
+              href="/booking"
+              onClick={() => setOpen(false)}
+              className="theme-btn style-two"
+            >
               Book Now <i className="fas fa-long-arrow-alt-right"></i>
             </Link>
           </div>

@@ -11,7 +11,7 @@ const offers = [
 
 export default function OfferSection() {
   return (
-    <section className="offer-section text-center rel z-1 pt-140 rpt-90 pb-120 rpb-70">
+    <section className="offer-section text-center rel  pt-140 rpt-90 pb-120 rpb-70 zndx">
       <div className="container">
         {/* Section Heading */}
         <div className="row justify-content-center">

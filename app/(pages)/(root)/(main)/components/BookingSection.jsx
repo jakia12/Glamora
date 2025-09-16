@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function BookingSection() {
   return (
-    <section className="booking-section pb-20" style={{ marginTop: "140px" }}>
+    <section className="booking-section pb-20" style={{ marginTop: "80px" }}>
       <div className="container-fluid">
         <div className="row">
           {/* Left: Working Hours */}
@@ -18,8 +18,9 @@ export default function BookingSection() {
                 <span className="bg-text danR">Booking</span>
                 <h3 className="Mont btl">Working Hours</h3>
                 <p className="para">
-                  Quis autem vel eum repreh enderit voluptate velit esse quame
-                  molestiae consequatur veillum
+                  Step into a world of relaxation and beauty at your
+                  convenience. Whether it’s a quick weekday refresh or a weekend
+                  indulgence, our doors are always open to welcome you.
                 </p>
                 <ul>
                   <li>
@@ -54,8 +55,9 @@ export default function BookingSection() {
                 <span className="bg-text danR">address</span>
                 <h3 className="Mont btl">Contact us</h3>
                 <p className="para">
-                  Quis autem vel eum repreh enderit voluptate velit esse quame
-                  molestiae consequatur veillum
+                  We’re here to make your beauty and wellness journey
+                  effortless. Reach out to us and let our team assist you with
+                  bookings, treatments, and all your spa needs.
                 </p>
                 <ul>
                   <li>

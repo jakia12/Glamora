@@ -45,12 +45,13 @@ export default function BlogSection() {
                   </ul>
                   <h4>
                     <Link href="/blog-details" className="Mont">
-                      Smase Podcast Episode Chris Ferdinande
+                      5 Skincare Secrets Every Woman Should Know
                     </Link>
                   </h4>
                   <p>
-                    Temporibus laboriosam veritatis expedita tenetur sequi
-                    molestiae
+                    Discover the timeless beauty tips that keep your skin
+                    glowing naturally. From hydration routines to spa facials,
+                    here’s how you can maintain radiant skin every day.
                   </p>
                 </div>
               </div>
@@ -83,11 +84,13 @@ export default function BlogSection() {
                   </ul>
                   <h4>
                     <Link href="/blog-details" className="Mont">
-                      Useful React Hooks That You Can Projects
+                      The Benefits of Regular Hair Spa Treatments
                     </Link>
                   </h4>
                   <p>
-                    Penetur sequi molestiae dicta hic omnis eligendi deserunt.
+                    Healthy hair starts with the right care. Learn how monthly
+                    hair spa treatments can repair damage, improve shine, and
+                    restore natural strength.
                   </p>
                 </div>
               </div>
@@ -120,11 +123,13 @@ export default function BlogSection() {
                   </ul>
                   <h4>
                     <Link href="/blog-details" className="Mont">
-                      Smase Podcast Episode Chris Ferdinande
+                      Why Massage Therapy is More Than Just Relaxation
                     </Link>
                   </h4>
                   <p>
-                    Architecto cumque porro, veniam suscipit consequatur harum,
+                    Massages not only relieve stress but also improve blood
+                    circulation, boost immunity, and promote better sleep.
+                    Here’s why you should book one today.
                   </p>
                 </div>
               </div>

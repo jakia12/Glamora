@@ -53,18 +53,18 @@ export default function ServicesPageSection() {
         <div className="row justify-content-center">
           <div className="col-lg-10">
             <div className="section-title text-center mb-65">
-              <img
+              {/* <img
                 className="bg-image"
                 src="/assets/images/shapes/service-bg.jpg"
                 alt="Leaf"
-              />
+              /> */}
               <span className="sub-title Mont" style={{ color: "#D6B981" }}>
                 What We Offer
               </span>
-              <h3 className="Mont">
-                Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-                esse quam nihil molestiae consequatur, vel illum qui dolorem eum
-                fugiat quo voluptas nulla pariatur
+              <h3 className="para">
+                At Glamora, we offer a range of premium beauty and spa services
+                designed to help you relax, rejuvenate, and feel your absolute
+                best.
               </h3>
             </div>
           </div>

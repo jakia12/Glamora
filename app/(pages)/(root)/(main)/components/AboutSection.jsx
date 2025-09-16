@@ -25,16 +25,17 @@ export default function AboutSection() {
               </div>
 
               <p style={{ fontSize: "18px" }}>
-                Sed ut persiciatis unde omnis iste natus error sit voluptate
-                maccusantium doloremque laudantium, totam rem aperiam eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explic aboemo enim ipsa
+                At our salon, beauty meets wellness. We believe true beauty
+                shines when it’s nurtured naturally, so we bring you treatments
+                that blend professional care with pure, organic products. Every
+                service is designed not only to enhance your look but to
+                rejuvenate your mind and body.
               </p>
 
               <ul className="list-style-one pt-20 pb-25">
-                <li>Natural Beauty Salon</li>
-                <li>Professional Women Spa Service</li>
-                <li>Experience Hair Treatments</li>
+                <li>Natural Beauty Salon Services</li>
+                <li>Professional Women’s Spa Treatments</li>
+                <li>Luxurious Hair & Skin Care Therapies</li>
               </ul>
 
               <Link href="/about" className="theme-btn style-two">

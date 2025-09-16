@@ -1,7 +1,7 @@
 export default function ContactBanner() {
   return (
     <section
-      className="page-banner text-white py-165 rpy-130"
+      className="page-banner text-white py-165 rpy-130 zndx"
       style={{
         backgroundImage: "url(/images/pban.png)",
         backgroundPosition: "top center",

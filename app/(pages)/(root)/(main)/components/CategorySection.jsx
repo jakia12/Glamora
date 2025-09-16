@@ -16,7 +16,11 @@ export default function CategorySection() {
             <Link href="/service-details">Nail Polish</Link>
           </h4>
         </div>
-        <p>Quis autem velum reprender eoluptate velit esse</p>
+        <p>
+          Pamper your nails with our wide range of luxurious colors and
+          long-lasting finishes. From classic elegance to bold statements, we
+          ensure your nails always make an impression.
+        </p>
         <Link href="/service-details" className="read-more">
           read more <i className="fas fa-long-arrow-alt-right"></i>
         </Link>
@@ -32,7 +36,11 @@ export default function CategorySection() {
             <Link href="/service-details">Brow Polish</Link>
           </h4>
         </div>
-        <p>Quis autem velum reprender eoluptate velit esse</p>
+        <p>
+          Enhance your natural beauty with perfectly shaped and polished brows.
+          Our experts craft a look that highlights your features and adds
+          confidence to your everyday style.
+        </p>
         <Link href="/service-details" className="read-more">
           read more <i className="fas fa-long-arrow-alt-right"></i>
         </Link>
@@ -52,7 +60,11 @@ export default function CategorySection() {
             <Link href="/service-details">Hair Dresser</Link>
           </h4>
         </div>
-        <p>Quis autem velum reprender eoluptate velit esse</p>
+        <p>
+          Step into style with our professional hairdressing services. Whether
+          it’s a fresh cut, a glamorous blowout, or a complete transformation,
+          we make every strand shine.
+        </p>
         <Link href="/service-details" className="read-more">
           read more <i className="fas fa-long-arrow-alt-right"></i>
         </Link>
@@ -72,7 +84,11 @@ export default function CategorySection() {
             <Link href="/service-details">Foot Massage</Link>
           </h4>
         </div>
-        <p>Quis autem velum reprender eoluptate velit esse</p>
+        <p>
+          Relax and rejuvenate with our soothing foot massage therapy. Relieve
+          stress, improve circulation, and leave with a refreshing lightness in
+          every step.
+        </p>
         <Link href="/service-details" className="read-more">
           read more <i className="fas fa-long-arrow-alt-right"></i>
         </Link>
@@ -94,7 +110,11 @@ export default function CategorySection() {
             </Link>
           </h4>
         </div>
-        <p>Quis autem velum reprender eoluptate velit esse</p>
+        <p>
+          Discover premium cosmetics that complement your natural glow. From
+          skincare essentials to professional makeup, we bring you beauty that
+          lasts all day.
+        </p>
         <Link href="/service-details" className="read-more">
           read more <i className="fas fa-long-arrow-alt-right"></i>
         </Link>

@@ -20,12 +20,14 @@ export default function FeedbackSection() {
 
               <div className="feedback-item-wrap mb-35">
                 <div className="feedback-content-item">
-                  Ut enim ad minima veniam,{" "}
-                  <span className="font-weight-bold">quis nostrum</span>{" "}
-                  exercitationem ullam corporis suscipit{" "}
-                  <span className="font-weight-normal">
-                    laboriosam nisi ut aliquid exea commodi consequatur
-                  </span>
+                  “An absolutely relaxing experience!{" "}
+                  <span className="font-weight-bold">
+                    {" "}
+                    From the moment I walked in, I felt at ease.
+                  </span>{" "}
+                  My skin has never felt this refreshed, and the staff were so
+                  welcoming.”{" "}
+                  <span className="font-weight-normal">– Sophia R.</span>
                 </div>
               </div>
 

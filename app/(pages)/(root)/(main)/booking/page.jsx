@@ -5,7 +5,7 @@ import OfferSection from "./components/OfferSection";
 
 const BookingPage = () => {
   return (
-    <div>
+    <div className="zndx">
       <BookingBanner />
       <OfferSection />
       <BookingHours />
