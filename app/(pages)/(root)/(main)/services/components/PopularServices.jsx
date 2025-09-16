@@ -61,7 +61,7 @@ export default function PopularServices() {
       </div>
 
       {/* Decorative Shapes */}
-      <img
+      {/* <img
         src="/assets/images/shapes/service-white-leaf.jpg"
         alt="Shape"
         className="white-leaf"
@@ -75,7 +75,7 @@ export default function PopularServices() {
         src="/assets/images/shapes/service-circle.jpg"
         alt="Shape"
         className="circle"
-      />
+      /> */}
     </section>
   );
 }
