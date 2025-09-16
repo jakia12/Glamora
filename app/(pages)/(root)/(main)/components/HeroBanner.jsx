@@ -9,7 +9,7 @@ export default function HeroSection() {
             <div className="hero-content mt-200 mb-220">
               <span className="bg-text danR">Beauty</span>
               <h1 className="wow fadeInUp delay-0-2s hero_title">
-                Natural Beaulty spa salon
+                Natural Beauty spa salon
               </h1>
               <div className="hero-btn mt-30 wow fadeInUp delay-0-4s">
                 <Link href="/about" className="theme-btn">
