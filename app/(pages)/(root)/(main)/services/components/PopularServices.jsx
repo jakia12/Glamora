@@ -15,7 +15,7 @@ const popularServices = [
 
 export default function PopularServices() {
   return (
-    <section className="popular-services rel z-1 py-150 rpy-100">
+    <section className="popular-services rel  py-150 rpy-100">
       <div className="container">
         <div className="row align-items-center">
           {/* Left Image */}

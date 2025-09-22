@@ -2,7 +2,10 @@ import Link from "next/link";
 
 export default function CategorySection() {
   return (
-    <section className="category-section">
+    <section
+      className="category-section"
+      style={{ paddingTop: "90px", paddingBottom: "40px" }}
+    >
       {/* Item 1 */}
       <div className="category-item bg-butter wow fadeInUp delay-0-2s">
         <img

@@ -5,7 +5,7 @@ import ContactMap from "./components/ContactMap";
 
 const ContactPage = () => {
   return (
-    <div>
+    <div className="zndx">
       <ContactBanner />
       <ContactInfoSection />
       <ContactMap />

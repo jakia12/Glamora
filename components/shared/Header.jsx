@@ -100,7 +100,7 @@ export default function Header() {
 
       {/* Overlay */}
       <div
-        className={`fixed inset-0 z-[100000000] bg-black/50 transition-opacity md:hidden ${
+        className={`fixed inset-0 z-50 bg-black/50 transition-opacity md:hidden ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setOpen(false)}
@@ -114,7 +114,7 @@ export default function Header() {
         role="dialog"
         aria-modal="true"
         aria-label="Main menu"
-        className={`h-[100vh] z-[100000000] overflow-y-hidden overflow-x-hidden fixed inset-y-0 left-0 bottom-0 w-full max-w-[100%] transform bg-[#D6B981] shadow-2xl transition-transform duration-300 pl-[20px] pr-[20px] md:hidden ${
+        className={`h-[100vh] z-50 overflow-y-hidden overflow-x-hidden fixed inset-y-0 left-0 bottom-0 w-full max-w-[100%] transform bg-[#D6B981] shadow-2xl transition-transform duration-300 pl-[20px] pr-[20px] md:hidden ${
           open ? "translate-x-0" : "-translate-x-full"
         }`}
       >
