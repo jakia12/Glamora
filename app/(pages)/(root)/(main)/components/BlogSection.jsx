@@ -1,6 +1,14 @@
+import { blogs } from "@/data/blogs";
 import Link from "next/link";
 
+const delays = ["delay-0-2s", "delay-0-4s", "delay-0-6s"];
+const pad2 = (n) => String(n ?? 0).padStart(2, "0");
+const excerpt = (s, n = 160) =>
+  s?.length > n ? s.slice(0, n).trim() + "…" : s || "";
+
 export default function BlogSection() {
+  const posts = blogs.slice(0, 9); // show up to 9
+
   return (
     <section className="blog-section rel z-1 pt-110 rpt-60 mb-105 rmb-55">
       <div className="container">
@@ -19,123 +27,57 @@ export default function BlogSection() {
 
         {/* Posts */}
         <div className="row">
-          {/* Post 1 */}
-          <div className="col-xl-4 col-md-6">
-            <div className="news-item wow fadeInUp delay-0-2s">
-              <div className="image">
-                <Link href="/blog-details">
-                  <img src="/images/news-1.webp" alt="News" />
-                </Link>
-              </div>
-              <div className="news-header">
-                <div className="title-meta">
-                  <ul>
-                    <li>
-                      <i className="far fa-user-circle"></i>
-                      <a href="#" style={{ color: "black", fontSize: "19px" }}>
-                        Robert Doe
-                      </a>
-                    </li>
-                    <li className="text-black">
-                      <i className="far fa-comment-dots"></i>
-                      <a href="#" style={{ color: "black", fontSize: "19px" }}>
-                        Comments (05)
-                      </a>
-                    </li>
-                  </ul>
-                  <h4>
-                    <Link href="/blog-details" className="Mont">
-                      5 Skincare Secrets Every Woman Should Know
-                    </Link>
-                  </h4>
-                  <p>
-                    Discover the timeless beauty tips that keep your skin
-                    glowing naturally. From hydration routines to spa facials,
-                    here’s how you can maintain radiant skin every day.
-                  </p>
+          {posts.slice(0, 3).map((p, idx) => (
+            <div key={p.slug} className="col-xl-4 col-md-6">
+              <div
+                className={`news-item wow fadeInUp ${
+                  delays[idx % delays.length]
+                }`}
+              >
+                <div className="image">
+                  <Link href={`/blogs/${p.slug}`}>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={p.img} alt={p.title} />
+                  </Link>
                 </div>
-              </div>
-            </div>
-          </div>
 
-          {/* Post 2 */}
-          <div className="col-xl-4 col-md-6">
-            <div className="news-item wow fadeInUp delay-0-4s">
-              <div className="image">
-                <Link href="/blog-details">
-                  <img src="/images/news-2.webp" alt="News" />
-                </Link>
-              </div>
-              <div className="news-header">
-                <div className="title-meta">
-                  <ul>
-                    <li>
-                      <i className="far fa-user-circle"></i>
-                      <a href="#" style={{ color: "black", fontSize: "19px" }}>
-                        Robert Doe
-                      </a>
-                    </li>
-                    <li>
-                      <i className="far fa-comment-dots"></i>
-                      <a href="#" style={{ color: "black", fontSize: "19px" }}>
-                        Comments (05)
-                      </a>
-                    </li>
-                  </ul>
-                  <h4>
-                    <Link href="/blog-details" className="Mont">
-                      The Benefits of Regular Hair Spa Treatments
-                    </Link>
-                  </h4>
-                  <p>
-                    Healthy hair starts with the right care. Learn how monthly
-                    hair spa treatments can repair damage, improve shine, and
-                    restore natural strength.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+                <div className="news-header">
+                  <div className="title-meta">
+                    <ul>
+                      <li>
+                        <i className="far fa-user-circle" />
+                        {/* keep your inline style */}
+                        <a
+                          href="#"
+                          style={{ color: "black", fontSize: "19px" }}
+                        >
+                          {p.author}
+                        </a>
+                      </li>
+                      <li className="text-black">
+                        <i className="far fa-comment-dots" />
+                        <a
+                          href="#"
+                          style={{ color: "black", fontSize: "19px" }}
+                        >
+                          Comments ({pad2(p.comments)})
+                        </a>
+                      </li>
+                    </ul>
 
-          {/* Post 3 */}
-          <div className="col-xl-4 col-md-6">
-            <div className="news-item wow fadeInUp delay-0-6s">
-              <div className="image">
-                <Link href="/blog-details">
-                  <img src="/images/news-3.webp" alt="News" />
-                </Link>
-              </div>
-              <div className="news-header">
-                <div className="title-meta">
-                  <ul>
-                    <li>
-                      <i className="far fa-user-circle"></i>
-                      <a href="#" style={{ color: "black", fontSize: "19px" }}>
-                        Robert Doe
-                      </a>
-                    </li>
-                    <li>
-                      <i className="far fa-comment-dots"></i>
-                      <a href="#" style={{ color: "black", fontSize: "19px" }}>
-                        Comments (05)
-                      </a>
-                    </li>
-                  </ul>
-                  <h4>
-                    <Link href="/blog-details" className="Mont">
-                      Why Massage Therapy is More Than Just Relaxation
-                    </Link>
-                  </h4>
-                  <p>
-                    Massages not only relieve stress but also improve blood
-                    circulation, boost immunity, and promote better sleep.
-                    Here’s why you should book one today.
-                  </p>
+                    <h4>
+                      <Link href={`/blogs/${p.slug}`} className="Mont">
+                        {p.title}
+                      </Link>
+                    </h4>
+
+                    <p>{excerpt(p.excerpt)}</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          {/* End Post 3 */}
+          ))}
+          {/* End Posts */}
         </div>
       </div>
     </section>
