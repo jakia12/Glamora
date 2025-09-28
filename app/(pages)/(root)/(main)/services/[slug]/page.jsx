@@ -75,14 +75,14 @@ export default function ServiceDetailsPage({ params }) {
               />
             </div>
             {/* GALLERY */}
-            {Array.isArray(data.gallery) && data.gallery.length > 0 && (
+            {/* {Array.isArray(data.gallery) && data.gallery.length > 0 && (
               <section className="section">
                 <h3 className="section-title">Look &amp; Feel</h3>
                 <div className="row g-3 g-lg-4">
                   {data.gallery.map((src, i) => (
                     <div className="col-6 col-md-4 col-lg-3" key={i}>
                       <div className="ratio ratio-1x1 rounded-4 overflow-hidden shadow-sm card-soft">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        
                         <img
                           src={src}
                           alt={`${data.title} ${i + 1}`}
@@ -93,7 +93,7 @@ export default function ServiceDetailsPage({ params }) {
                   ))}
                 </div>
               </section>
-            )}
+            )} */}
 
             {/* TIERS / PRICING */}
             {Array.isArray(data.tiers) && data.tiers.length > 0 && (

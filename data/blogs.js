@@ -81,7 +81,7 @@ export const blogs = [
     category: "Bridal",
     categorySlug: "bridal",
     tags: ["bridal", "makeup", "hair-trial"],
-    img: "/images/news-4.webp",
+    img: "/images/ns4.png",
     excerpt:
       "Avoid wedding-day surprises — follow this step-by-step bridal beauty checklist for hair trials, skin prep, and timing with your stylist.",
     readTime: "9 min",
@@ -105,7 +105,7 @@ export const blogs = [
     category: "Nails",
     categorySlug: "nails",
     tags: ["manicure", "nail-health", "cuticle-care"],
-    img: "/images/news-5.webp",
+    img: "/images/ns5.png",
     excerpt:
       "Healthy nails start with good habits. Learn professional tips you can do at home: gentle filing, cuticle care, and hydration.",
     readTime: "5 min",
@@ -129,7 +129,7 @@ export const blogs = [
     category: "Trends",
     categorySlug: "trends",
     tags: ["2025", "hair-trends", "wellness-trends"],
-    img: "/images/news-6.webp",
+    img: "/images/ns6.png",
     excerpt:
       "From scalp health to sustainable beauty, these are the top salon trends shaping client expectations in 2025.",
     readTime: "8 min",
@@ -153,7 +153,7 @@ export const blogs = [
     category: "Skincare",
     categorySlug: "skincare",
     tags: ["gua-sha", "microneedling", "led-light"],
-    img: "/images/news-7.webp",
+    img: "/images/ns7.png",
     excerpt:
       "LED masks, gua-sha, microcurrent — we separate clinical tools from marketing. Learn which devices deliver results and which to skip.",
     readTime: "6 min",
@@ -168,52 +168,52 @@ export const blogs = [
       The bottom line: some tools work as supportive additions, but they don’t replace professional care. Always follow instructions carefully and consult a specialist before investing in expensive devices.
     `,
   },
-  {
-    title: "Quick Fixes for Oily Skin: Salon Treatments That Help",
-    slug: "quick-fixes-for-oily-skin",
-    author: "Nadia Rahman",
-    publishedDate: "2025-03-18",
-    comments: 6,
-    category: "Treatments",
-    categorySlug: "treatments",
-    tags: ["oil-control", "facial-treatment", "cleansing"],
-    img: "/images/news-8.webp",
-    excerpt:
-      "If shine is your daily struggle, these salon treatments reduce oil production and clear congestion without stripping your skin.",
-    readTime: "5 min",
-    featured: false,
-    content: `
-      Oily skin can be frustrating, but with the right treatments, it’s manageable. Professional deep-cleansing facials are one of the most effective solutions. These treatments combine steaming, exfoliation, and extractions to remove excess sebum and impurities.
+  //   {
+  //     title: "Quick Fixes for Oily Skin: Salon Treatments That Help",
+  //     slug: "quick-fixes-for-oily-skin",
+  //     author: "Nadia Rahman",
+  //     publishedDate: "2025-03-18",
+  //     comments: 6,
+  //     category: "Treatments",
+  //     categorySlug: "treatments",
+  //     tags: ["oil-control", "facial-treatment", "cleansing"],
+  //     img: "/images/news-8.webp",
+  //     excerpt:
+  //       "If shine is your daily struggle, these salon treatments reduce oil production and clear congestion without stripping your skin.",
+  //     readTime: "5 min",
+  //     featured: false,
+  //     content: `
+  //       Oily skin can be frustrating, but with the right treatments, it’s manageable. Professional deep-cleansing facials are one of the most effective solutions. These treatments combine steaming, exfoliation, and extractions to remove excess sebum and impurities.
 
-      Another option is enzyme or chemical peels, which gently resurface the skin and help regulate oil production. Salons often follow up with calming serums to avoid post-peel irritation.
+  //       Another option is enzyme or chemical peels, which gently resurface the skin and help regulate oil production. Salons often follow up with calming serums to avoid post-peel irritation.
 
-      LED light therapy, particularly blue light, has also proven effective in targeting bacteria and reducing oil activity. When combined with other treatments, it provides long-term improvements for oily and acne-prone skin.
+  //       LED light therapy, particularly blue light, has also proven effective in targeting bacteria and reducing oil activity. When combined with other treatments, it provides long-term improvements for oily and acne-prone skin.
 
-      At home, maintaining results means using lightweight moisturizers and non-comedogenic SPF. Stripping your skin of oils can backfire by increasing production, so balance is key.
-    `,
-  },
-  {
-    title: "Choosing the Right Salon Products: A Practical Guide",
-    slug: "choosing-right-salon-products-guide",
-    author: "Robert Doe",
-    publishedDate: "2025-02-05",
-    comments: 1,
-    category: "Products",
-    categorySlug: "products",
-    tags: ["hair-products", "skincare-products", "sulfate-free"],
-    img: "/images/news-9.webp",
-    excerpt:
-      "From sulfate-free shampoos to gentle cleansers, this guide helps you pick professional-quality products based on your hair and skin needs.",
-    readTime: "6 min",
-    featured: false,
-    content: `
-      Walking down the beauty aisle can feel overwhelming, with endless choices and conflicting claims. The first step is to identify your primary concern. Is it dryness, frizz, sensitivity, or anti-aging? Your main goal should guide your product selection.
+  //       At home, maintaining results means using lightweight moisturizers and non-comedogenic SPF. Stripping your skin of oils can backfire by increasing production, so balance is key.
+  //     `,
+  //   },
+  //   {
+  //     title: "Choosing the Right Salon Products: A Practical Guide",
+  //     slug: "choosing-right-salon-products-guide",
+  //     author: "Robert Doe",
+  //     publishedDate: "2025-02-05",
+  //     comments: 1,
+  //     category: "Products",
+  //     categorySlug: "products",
+  //     tags: ["hair-products", "skincare-products", "sulfate-free"],
+  //     img: "/images/news-9.webp",
+  //     excerpt:
+  //       "From sulfate-free shampoos to gentle cleansers, this guide helps you pick professional-quality products based on your hair and skin needs.",
+  //     readTime: "6 min",
+  //     featured: false,
+  //     content: `
+  //       Walking down the beauty aisle can feel overwhelming, with endless choices and conflicting claims. The first step is to identify your primary concern. Is it dryness, frizz, sensitivity, or anti-aging? Your main goal should guide your product selection.
 
-      For hair, sulfate-free shampoos are essential for color-treated or dry strands. They cleanse gently without stripping natural oils. Pair them with a conditioner rich in proteins or natural oils to repair and hydrate. For skin, avoid harsh cleansers that leave your skin tight — a gentle, pH-balanced option is best.
+  //       For hair, sulfate-free shampoos are essential for color-treated or dry strands. They cleanse gently without stripping natural oils. Pair them with a conditioner rich in proteins or natural oils to repair and hydrate. For skin, avoid harsh cleansers that leave your skin tight — a gentle, pH-balanced option is best.
 
-      Reading ingredient labels is crucial. Look for antioxidants like vitamin C for brightening, peptides for anti-aging, and ceramides for barrier support. Avoid unnecessary fragrances if you have sensitive skin.
+  //       Reading ingredient labels is crucial. Look for antioxidants like vitamin C for brightening, peptides for anti-aging, and ceramides for barrier support. Avoid unnecessary fragrances if you have sensitive skin.
 
-      When in doubt, ask your stylist or esthetician for product recommendations. Professionals test and use these products daily, so their advice is tailored and practical. Starting with sample sizes before committing to a full bottle can also save money and prevent disappointment.
-    `,
-  },
+  //       When in doubt, ask your stylist or esthetician for product recommendations. Professionals test and use these products daily, so their advice is tailored and practical. Starting with sample sizes before committing to a full bottle can also save money and prevent disappointment.
+  //     `,
+  //   },
 ];

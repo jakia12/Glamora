@@ -1,0 +1,337 @@
+import { blogs } from "@/data/blogs";
+import Image from "next/image";
+import Link from "next/link";
+
+// --- helpers
+const fmtDate = (iso) =>
+  new Date(iso).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+export const metadata = {
+  title: "Blog | Glamora",
+  description:
+    "Read skincare guides, hair care tips, wellness advice, and salon trends from the Glamora team.",
+};
+
+export default function BlogIndexPage({ searchParams }) {
+  // sort newest first
+  const all = [...blogs].sort(
+    (a, b) => new Date(b.publishedDate) - new Date(a.publishedDate)
+  );
+
+  // --- pagination
+  const pageSize = 6;
+  const page = Math.max(1, Number(searchParams?.page || 1));
+  const totalPages = Math.max(1, Math.ceil(all.length / pageSize));
+  const start = (page - 1) * pageSize;
+  const items = all.slice(start, start + pageSize);
+
+  const pageHref = (n) => `/blogs${n > 1 ? `?page=${n}` : ""}`;
+
+  // build compact page list with ellipses
+  const buildPages = (current, total) => {
+    if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+    const pages = [1];
+    if (current > 3) pages.push("…");
+    if (current > 2) pages.push(current - 1);
+    pages.push(current);
+    if (current < total - 1) pages.push(current + 1);
+    if (current < total - 2) pages.push("…");
+    pages.push(total);
+    // dedupe/normalize
+    return pages.filter((v, i, arr) => v !== arr[i - 1]);
+  };
+
+  // --- sidebar data
+  const categories = Array.from(
+    all.reduce((m, p) => {
+      const prev = m.get(p.categorySlug) || {
+        name: p.category,
+        slug: p.categorySlug,
+        count: 0,
+      };
+      prev.count += 1;
+      return m.set(p.categorySlug, prev);
+    }, new Map())
+  ).map(([, v]) => v);
+
+  const recent = all.slice(0, 5);
+
+  const tagCloud = Array.from(
+    all.reduce((set, p) => {
+      (p.tags || []).forEach((t) => set.add(t));
+      return set;
+    }, new Set())
+  ).slice(0, 20);
+
+  return (
+    <main className="container py-4 py-lg-5">
+      {/* Breadcrumb */}
+      <nav aria-label="breadcrumb" className="mb-3 small">
+        <ol className="breadcrumb mb-0">
+          <li className="breadcrumb-item">
+            <Link href="/">Home</Link>
+          </li>
+          <li className="breadcrumb-item active" aria-current="page">
+            Blog
+          </li>
+        </ol>
+      </nav>
+
+      <div className="row g-4 g-lg-5">
+        {/* LEFT: posts */}
+        <div className="col-12 col-lg-8">
+          {/* Grid of posts (2-up md, 3-up lg) */}
+          <div className="row g-4">
+            {items.map((p, idx) => (
+              <div key={p.slug} className="col-12 col-md-6 col-lg-6">
+                <article className="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
+                  <div className="ratio ratio-16x9">
+                    <Image
+                      src={p.img}
+                      alt={p.title}
+                      fill
+                      sizes="(max-width: 992px) 100vw, 33vw"
+                      style={{ objectFit: "cover" }}
+                      priority={idx === 0}
+                    />
+                  </div>
+                  <div className="card-body d-flex flex-column p-3 p-md-4">
+                    <div className="d-flex flex-wrap align-items-center gap-2 mb-2">
+                      <span className="badge text-bg-light border">
+                        {p.category}
+                      </span>
+                      {p.featured && (
+                        <span className="badge text-bg-dark">Featured</span>
+                      )}
+                      <span className="ms-auto small text-secondary">
+                        {fmtDate(p.publishedDate)} • {p.readTime || "5 min"}
+                      </span>
+                    </div>
+
+                    <h2 className="h5 mb-2">
+                      <Link
+                        href={`/blogs/${p.slug}`}
+                        className="link-dark text-decoration-none"
+                      >
+                        {p.title}
+                      </Link>
+                    </h2>
+
+                    <p className="text-secondary mb-3 text-clamp-3">
+                      {p.excerpt}
+                    </p>
+
+                    <div className="mt-auto d-flex align-items-center gap-3">
+                      <div className="small">
+                        <i className="far fa-user-circle me-1" />
+                        {p.author}
+                      </div>
+                      <div className="vr" />
+                      <div className="small text-secondary">
+                        <i className="far fa-comment-dots me-1" />
+                        {String(p.comments).padStart(2, "0")} comments
+                      </div>
+
+                      <Link
+                        href={`/blogs/${p.slug}`}
+                        className="btn btn-sm btn-dark ms-auto"
+                      >
+                        Read more →
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              </div>
+            ))}
+          </div>
+
+          {/* Pagination (compact with ellipses) */}
+          <nav className="mt-4" aria-label="Blog pagination">
+            <ul className="pagination">
+              <li className={`page-item ${page <= 1 ? "disabled" : ""}`}>
+                {page <= 1 ? (
+                  <span className="page-link">Previous</span>
+                ) : (
+                  <Link href={pageHref(page - 1)} className="page-link">
+                    Previous
+                  </Link>
+                )}
+              </li>
+
+              {buildPages(page, totalPages).map((n, i) =>
+                n === "…" ? (
+                  <li key={`dots-${i}`} className="page-item disabled">
+                    <span className="page-link">…</span>
+                  </li>
+                ) : (
+                  <li
+                    key={n}
+                    className={`page-item ${n === page ? "active" : ""}`}
+                  >
+                    {n === page ? (
+                      <span className="page-link">{n}</span>
+                    ) : (
+                      <Link href={pageHref(n)} className="page-link">
+                        {n}
+                      </Link>
+                    )}
+                  </li>
+                )
+              )}
+
+              <li
+                className={`page-item ${page >= totalPages ? "disabled" : ""}`}
+              >
+                {page >= totalPages ? (
+                  <span className="page-link">Next</span>
+                ) : (
+                  <Link href={pageHref(page + 1)} className="page-link">
+                    Next
+                  </Link>
+                )}
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        {/* RIGHT: sidebar widgets (unchanged) */}
+        <aside className="col-12 col-lg-4">
+          <div className="sticky-lg-top" style={{ top: "88px" }}>
+            {/* Search */}
+            <div className="card border-0 shadow-sm rounded-4 mb-3">
+              <div className="card-body">
+                <h5 className="card-title mb-3">Search</h5>
+                <form action="/blogs/search" method="GET">
+                  <div className="input-group">
+                    <input
+                      name="q"
+                      type="search"
+                      className="form-control"
+                      placeholder="Search articles..."
+                    />
+                    <button className="btn btn-dark" type="submit">
+                      <i className="fa fa-search" aria-hidden="true" />
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+            {/* Categories */}
+            <div className="card border-0 shadow-sm rounded-4 mb-3">
+              <div className="card-body">
+                <h5 className="card-title mb-3">Categories</h5>
+                <ul className="list-unstyled mb-0">
+                  {categories.map((c) => (
+                    <li
+                      key={c.slug}
+                      className="d-flex align-items-center justify-content-between mb-2"
+                    >
+                      <Link
+                        href={`/blogs/category/${c.slug}`}
+                        className="link-dark text-decoration-none"
+                      >
+                        {c.name}
+                      </Link>
+                      <span className="badge text-bg-light border">
+                        {c.count}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Recent posts */}
+            <div className="card border-0 shadow-sm rounded-4 mb-3">
+              <div className="card-body">
+                <h5 className="card-title mb-3">Recent Posts</h5>
+                <ul className="list-unstyled mb-0">
+                  {recent.map((r) => (
+                    <li
+                      key={r.slug}
+                      className="d-flex gap-3 align-items-center mb-3"
+                    >
+                      <div
+                        className="ratio ratio-1x1 rounded overflow-hidden"
+                        style={{ width: 64 }}
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={r.img}
+                          alt={r.title}
+                          className="w-100 h-100"
+                          style={{ objectFit: "cover" }}
+                        />
+                      </div>
+                      <div className="flex-grow-1">
+                        <Link
+                          href={`/blogs/${r.slug}`}
+                          className="small link-dark text-decoration-none"
+                        >
+                          {r.title}
+                        </Link>
+                        <div className="small text-secondary">
+                          {fmtDate(r.publishedDate)}
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Tag cloud */}
+            {tagCloud.length > 0 && (
+              <div className="card border-0 shadow-sm rounded-4 mb-3">
+                <div className="card-body">
+                  <h5 className="card-title mb-3">Tags</h5>
+                  <div className="d-flex flex-wrap gap-2">
+                    {tagCloud.map((t) => (
+                      <Link
+                        key={t}
+                        href={`/blogs/tag/${t}`}
+                        className="btn btn-sm btn-outline-secondary"
+                      >
+                        #{t}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Newsletter */}
+            <div className="card border-0 shadow-sm rounded-4">
+              <div className="card-body">
+                <h5 className="card-title mb-2">Get beauty tips weekly</h5>
+                <p className="small text-secondary">
+                  Join our newsletter for skincare routines, hair guides, and
+                  offers.
+                </p>
+                <form action="/api/newsletter" method="POST">
+                  <div className="mb-2">
+                    <input
+                      name="email"
+                      type="email"
+                      required
+                      className="form-control"
+                      placeholder="you@example.com"
+                    />
+                  </div>
+                  <button type="submit" className="btn btn-dark w-100">
+                    Subscribe
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+  );
+}
