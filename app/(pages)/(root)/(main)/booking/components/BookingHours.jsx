@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 const hours = [
   { day: "Mon to Friday", time: "7:30 am — 1:00 am" },
   { day: "Saturday", time: "7:30 am — 1:00 am" },
@@ -47,9 +45,9 @@ export default function BookingHours() {
               </ul>
 
               {/* CTA Button */}
-              <Link href="/booking" className="theme-btn style-two">
+              {/* <Link href="/booking" className="theme-btn style-two">
                 booking now <i className="fas fa-long-arrow-alt-right"></i>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

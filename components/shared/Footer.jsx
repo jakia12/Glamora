@@ -127,11 +127,11 @@ export default function Footer() {
         <div className="copyright-area pt-25 pb-15">
           <ul className="footer-menu py-5">
             <li>
-              <Link href="#">Services</Link>
+              <Link href="#">Terms & Conditions</Link>
             </li>
 
             <li>
-              <Link href="/">Privacy</Link>
+              <Link href="/">Privacy Policy</Link>
             </li>
           </ul>
           <p>© 2025 Glamora, All Rights Reserved</p>
