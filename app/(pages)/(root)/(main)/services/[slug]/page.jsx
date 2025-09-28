@@ -97,8 +97,11 @@ export default function ServiceDetailsPage({ params }) {
 
             {/* TIERS / PRICING */}
             {Array.isArray(data.tiers) && data.tiers.length > 0 && (
-              <section className="section">
-                <h3 className="section-title">Packages &amp; Pricing</h3>
+              <section
+                className="section my-[70px] "
+                style={{ padding: "70px 0" }}
+              >
+                <h3 className="section-title mont">Packages &amp; Pricing</h3>
                 <div className="table-responsive card-soft rounded-4">
                   <table className="table align-middle mb-0">
                     <thead className="table-light">
@@ -110,7 +113,7 @@ export default function ServiceDetailsPage({ params }) {
                     </thead>
                     <tbody>
                       {data.tiers.map((t, i) => (
-                        <tr key={i}>
+                        <tr key={i} className="mont">
                           <td className="fw-medium">{t.name}</td>
                           <td className="text-muted">{t.duration}</td>
                           <td className="fw-semibold">${t.price}</td>
@@ -126,7 +129,7 @@ export default function ServiceDetailsPage({ params }) {
             {(data.preparation?.length ||
               data.aftercare?.length ||
               data.benefits?.length) && (
-              <section className="section">
+              <section className="section" style={{ padding: "0px 0 40px" }}>
                 <div className="row g-4 g-lg-5">
                   {data.preparation?.length > 0 && (
                     <div className="col-12 col-lg-4">
@@ -181,8 +184,8 @@ export default function ServiceDetailsPage({ params }) {
             )}
 
             {/* FAQS */}
-            {Array.isArray(data.faqs) && data.faqs.length > 0 && (
-              <section className="section">
+            {/* {Array.isArray(data.faqs) && data.faqs.length > 0 && (
+              <section className="section" style={{ padding: "0px 0 60px" }}>
                 <h3 className="section-title">FAQs</h3>
                 <div className="accordion accordion-flush" id="faq">
                   {data.faqs.map((item, i) => (
@@ -210,7 +213,7 @@ export default function ServiceDetailsPage({ params }) {
                   ))}
                 </div>
               </section>
-            )}
+            )} */}
           </div>
 
           <div className="col-12 col-lg-4">
@@ -244,16 +247,22 @@ export default function ServiceDetailsPage({ params }) {
               </ul>
             )}
 
-            <div className="d-flex flex-wrap align-items-center gap-3">
+            <div className=" gap-3">
               <div className="display-6 fw-semibold mb-0">
                 ${data.fromPrice}
               </div>
               <span className="text-muted">starting price</span>
-              <div className="ms-auto d-flex gap-2">
-                <a href="#book" className="btn btn-dark">
+              <div
+                className="ms-auto d-flex gap-2 mt-[40px]"
+                style={{ marginTop: "30px" }}
+              >
+                <a href="#book" className="btn btn-dark custom_btn">
                   Book Now
                 </a>
-                <Link href="/services" className="btn btn-outline-secondary">
+                <Link
+                  href="/services"
+                  className="btn btn-outline-secondary custom_btn"
+                >
                   Back
                 </Link>
               </div>
@@ -263,7 +272,7 @@ export default function ServiceDetailsPage({ params }) {
       </section>
 
       {/* MORE SERVICES */}
-      <section className="section pt-0">
+      <section className="section pt-0" style={{ padding: "0px 0 60px" }}>
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h3 className="mb-0">More Services</h3>
           <Link href="/services" className="btn btn-link px-0">

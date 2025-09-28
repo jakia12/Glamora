@@ -1,6 +1,7 @@
 import { blogs } from "@/data/blogs";
 import Image from "next/image";
 import Link from "next/link";
+import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 // --- helpers
 const fmtDate = (iso) =>
@@ -150,14 +151,22 @@ export default function BlogIndexPage({ searchParams }) {
           </div>
 
           {/* Pagination (compact with ellipses) */}
+          {/* Pagination (compact with ellipses) */}
           <nav className="mt-4" aria-label="Blog pagination">
             <ul className="pagination">
+              {/* Prev */}
               <li className={`page-item ${page <= 1 ? "disabled" : ""}`}>
                 {page <= 1 ? (
-                  <span className="page-link">Previous</span>
+                  <span className="page-link" aria-label="Previous">
+                    <FiChevronLeft size={20} />
+                  </span>
                 ) : (
-                  <Link href={pageHref(page - 1)} className="page-link">
-                    Previous
+                  <Link
+                    href={pageHref(page - 1)}
+                    className="page-link"
+                    aria-label="Previous"
+                  >
+                    <FiChevronLeft size={20} />
                   </Link>
                 )}
               </li>
@@ -183,14 +192,21 @@ export default function BlogIndexPage({ searchParams }) {
                 )
               )}
 
+              {/* Next */}
               <li
                 className={`page-item ${page >= totalPages ? "disabled" : ""}`}
               >
                 {page >= totalPages ? (
-                  <span className="page-link">Next</span>
+                  <span className="page-link" aria-label="Next">
+                    <FiChevronRight size={20} />
+                  </span>
                 ) : (
-                  <Link href={pageHref(page + 1)} className="page-link">
-                    Next
+                  <Link
+                    href={pageHref(page + 1)}
+                    className="page-link"
+                    aria-label="Next"
+                  >
+                    <FiChevronRight size={20} />
                   </Link>
                 )}
               </li>

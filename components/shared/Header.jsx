@@ -38,7 +38,7 @@ export default function Header() {
     <header
       className={[
         // removed: sticky top-0 and negative margin hack
-        "z-50 border-b transition-colors duration-300",
+        "z-50 border-b transition-colors duration-300 header",
         open
           ? "bg-[#102039]/90 border-white/10 backdrop-blur shadow-lg"
           : "bg-transparent border-white/25",

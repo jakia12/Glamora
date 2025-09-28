@@ -10713,6 +10713,57 @@ h2 {
     display: block;
   }
 }
+.pagination li a,
+.pagination li .page-link {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  text-align: center;
+  color: #242424;
+  background: #fff;
+  border: 1px solid #c4c4c4;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  font-weight: 600;
+  line-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+}
+.page-item:first-child .page-link {
+  border-top-left-radius: none !important;
+  border-bottom-left-radius: none !important;
+}
+
+.header {
+  box-shadow: 0 -1px 45px #ddddddcf;
+  border-bottom: 1px solid #dddddd82;
+}
+
+.custom_btn {
+  width: 149px;
+  padding: 8px 36px;
+}
+
+/* blog section home page */
+/* Keep card spacing/feel consistent */
+.news-item .title-meta a:hover {
+  text-decoration: underline;
+}
+.news-item .badge {
+  border-radius: 999px;
+}
+
+/* Slight hover lift on cards */
+.news-item {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.news-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.08);
+}
 
 @media (max-width: 768px) {
   .hidd {
