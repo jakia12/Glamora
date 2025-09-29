@@ -16,7 +16,7 @@ export default function CategorySection() {
         <div className="category-title">
           <span className="bg-text danR">Category</span>
           <h4 style={{ marginTop: "30px" }} className="Mont">
-            <Link href="/service-details">Nail Polish</Link>
+            <Link href="/services">Nail Polish</Link>
           </h4>
         </div>
         <p>
@@ -24,8 +24,8 @@ export default function CategorySection() {
           long-lasting finishes. From classic elegance to bold statements, we
           ensure your nails always make an impression.
         </p>
-        <Link href="/service-details" className="read-more">
-          read more <i className="fas fa-long-arrow-alt-right"></i>
+        <Link href="/services" className="read-more">
+          Learn More <i className="fas fa-long-arrow-alt-right"></i>
         </Link>
         <div className="for-border"></div>
       </div>
@@ -36,7 +36,7 @@ export default function CategorySection() {
         <div className="category-title">
           <span className="bg-text danR">Category</span>
           <h4 style={{ marginTop: "30px" }} className="Mont">
-            <Link href="/service-details">Brow Polish</Link>
+            <Link href="/services">Brow Polish</Link>
           </h4>
         </div>
         <p>
@@ -44,8 +44,8 @@ export default function CategorySection() {
           Our experts craft a look that highlights your features and adds
           confidence to your everyday style.
         </p>
-        <Link href="/service-details" className="read-more">
-          read more <i className="fas fa-long-arrow-alt-right"></i>
+        <Link href="/services" className="read-more">
+          Learn More <i className="fas fa-long-arrow-alt-right"></i>
         </Link>
         <div className="for-border"></div>
       </div>
@@ -60,7 +60,7 @@ export default function CategorySection() {
         <div className="category-title">
           <span className="bg-text danR">Category</span>
           <h4 style={{ marginTop: "30px" }} className="Mont">
-            <Link href="/service-details">Hair Dresser</Link>
+            <Link href="/services">Hair Dresser</Link>
           </h4>
         </div>
         <p>
@@ -68,8 +68,8 @@ export default function CategorySection() {
           it’s a fresh cut, a glamorous blowout, or a complete transformation,
           we make every strand shine.
         </p>
-        <Link href="/service-details" className="read-more">
-          read more <i className="fas fa-long-arrow-alt-right"></i>
+        <Link href="/services" className="read-more">
+          Learn More <i className="fas fa-long-arrow-alt-right"></i>
         </Link>
         <div className="for-border"></div>
       </div>
@@ -84,7 +84,7 @@ export default function CategorySection() {
         <div className="category-title">
           <span className="bg-text danR">Category</span>
           <h4 style={{ marginTop: "30px" }} className="Mont">
-            <Link href="/service-details">Foot Massage</Link>
+            <Link href="/services">Foot Massage</Link>
           </h4>
         </div>
         <p>
@@ -92,8 +92,8 @@ export default function CategorySection() {
           stress, improve circulation, and leave with a refreshing lightness in
           every step.
         </p>
-        <Link href="/service-details" className="read-more">
-          read more <i className="fas fa-long-arrow-alt-right"></i>
+        <Link href="/services" className="read-more">
+          Learn More <i className="fas fa-long-arrow-alt-right"></i>
         </Link>
         <div className="for-border"></div>
       </div>
@@ -108,7 +108,7 @@ export default function CategorySection() {
         <div className="category-title">
           <span className="bg-text danR">Category</span>
           <h4>
-            <Link href="/service-details" className="Mont">
+            <Link href="/services" className="Mont">
               Cosmetics
             </Link>
           </h4>
@@ -118,8 +118,8 @@ export default function CategorySection() {
           skincare essentials to professional makeup, we bring you beauty that
           lasts all day.
         </p>
-        <Link href="/service-details" className="read-more">
-          read more <i className="fas fa-long-arrow-alt-right"></i>
+        <Link href="/services" className="read-more">
+          Learn More <i className="fas fa-long-arrow-alt-right"></i>
         </Link>
         <div className="for-border"></div>
       </div>

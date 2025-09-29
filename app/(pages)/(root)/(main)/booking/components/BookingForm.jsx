@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import { z } from "zod";
 // adjust this path if your folder structure differs
 import { services as allServices } from "../../../../../../data/services";
@@ -185,6 +186,7 @@ export default function BookingForm({ serviceSlug } = {}) {
   // validation state
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // totals
   const basePrice = tier?.price ?? selService?.fromPrice ?? 0;
@@ -203,7 +205,7 @@ export default function BookingForm({ serviceSlug } = {}) {
 
   /* --------- VALIDATE ONLY AFTER FIRST SUBMIT --------- */
   useEffect(() => {
-    if (!submitted) return; // <- key: do not show errors until user submits once
+    if (!submitted) return; // do not show errors until user submits once
     const schema = makeSchema(slots);
     const result = schema.safeParse({
       selServiceSlug,
@@ -239,7 +241,7 @@ export default function BookingForm({ serviceSlug } = {}) {
     );
   }
 
-  function submit(e) {
+  async function submit(e) {
     e.preventDefault();
     setSubmitted(true);
 
@@ -264,20 +266,47 @@ export default function BookingForm({ serviceSlug } = {}) {
       return;
     }
 
-    const payload = {
-      service: selService?.slug,
-      tier: tier.name,
-      date,
-      time,
-      staffId,
-      addons,
-      contact,
-      notes,
-      total,
-      smsOptIn,
-    };
-    console.log("BOOKING:", payload);
-    alert("Booking submitted! (Check console for payload)");
+    try {
+      setIsSubmitting(true);
+
+      const payload = {
+        service: selService?.slug,
+        tier: selService?.tiers?.[tierIdx]?.name || "Standard",
+        date,
+        time,
+        staffId,
+        addons,
+        contact,
+        notes,
+        total, // client-side total (server will recompute)
+        smsOptIn,
+      };
+
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error || "Checkout failed");
+      }
+
+      const { url } = await res.json();
+      toast.success("Securing your checkout…", {
+        duration: 1100,
+        style: { borderRadius: "10px", background: "#111", color: "#fff" },
+      });
+
+      setTimeout(() => {
+        window.location.href = url;
+      }, 700);
+    } catch (err) {
+      console.error(err);
+      toast.error(err.message || "Something went wrong. Please try again.");
+      setIsSubmitting(false);
+    }
   }
 
   // show messages only after submit
@@ -289,6 +318,9 @@ export default function BookingForm({ serviceSlug } = {}) {
       className="booking-form container px-0 pb-[80px]"
       style={{ marginBottom: "70px" }}
     >
+      {/* Toasts */}
+      <Toaster position="top-center" />
+
       <div className="booking-page-content wow fadeInLeft delay-0-2s">
         <div className="section-title mb-30">
           <span className="bg-text danR">booking</span>
@@ -576,7 +608,8 @@ export default function BookingForm({ serviceSlug } = {}) {
                       )}
                     </div>
 
-                    {/* <div className="form-check mt-2">
+                    {/* Uncomment to enable SMS opt-in
+                    <div className="form-check mt-2">
                       <input
                         className="form-check-input tiny-check"
                         type="checkbox"
@@ -598,8 +631,23 @@ export default function BookingForm({ serviceSlug } = {}) {
 
             {/* Submit */}
             <div className="d-grid">
-              <button className="btn btn-dark btn-lg" type="submit">
-                Confirm Booking
+              <button
+                className="btn btn-dark btn-lg"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <>
+                    <span
+                      className="spinner-border spinner-border-sm me-2"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                    Processing…
+                  </>
+                ) : (
+                  "Confirm Booking"
+                )}
               </button>
             </div>
           </form>
@@ -699,6 +747,30 @@ export default function BookingForm({ serviceSlug } = {}) {
           </div>
         </div>
       </div>
+
+      {/* Tiny checkbox styles */}
+      <style jsx>{`
+        .tiny-check {
+          width: 20px;
+          height: 20px;
+          min-width: 20px;
+          min-height: 20px;
+          border-radius: 0.25rem;
+          margin-top: 0.2rem;
+          background-size: 14px 14px;
+        }
+        .form-check-input.tiny-check:checked {
+          background-color: #d6b981;
+          border-color: #d6b981;
+        }
+        .form-check-input.tiny-check:focus {
+          box-shadow: 0 0 0 0.2rem rgba(214, 185, 129, 0.25);
+          border-color: #d6b981;
+        }
+        .tiny-label {
+          margin-left: 0.4rem;
+        }
+      `}</style>
     </section>
   );
 }

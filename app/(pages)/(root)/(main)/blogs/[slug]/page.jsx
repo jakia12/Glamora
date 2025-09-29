@@ -152,7 +152,7 @@ export default function BlogPostPage({ params }) {
                 ))}
               </div>
 
-              {!!post.tags?.length && (
+              {/* {!!post.tags?.length && (
                 <div className="mt-4">
                   {post.tags.map((t) => (
                     <Link
@@ -164,7 +164,7 @@ export default function BlogPostPage({ params }) {
                     </Link>
                   ))}
                 </div>
-              )}
+              )} */}
             </div>
           </article>
 
@@ -300,7 +300,7 @@ export default function BlogPostPage({ params }) {
             </div>
 
             {/* Tag cloud */}
-            {tagCloud.length > 0 && (
+            {/* {tagCloud.length > 0 && (
               <div className="card border-0 shadow-sm rounded-4 mb-3">
                 <div className="card-body">
                   <h5 className="card-title mb-3">Tags</h5>
@@ -317,7 +317,7 @@ export default function BlogPostPage({ params }) {
                   </div>
                 </div>
               </div>
-            )}
+            )} */}
 
             {/* Newsletter (POST, no client JS needed) */}
             <div className="card border-0 shadow-sm rounded-4">

@@ -1,6 +1,11 @@
+"use client";
+
 import { blogs } from "@/data/blogs";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import toast from "react-hot-toast";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
 // --- helpers
@@ -11,17 +16,33 @@ const fmtDate = (iso) =>
     day: "numeric",
   });
 
-export const metadata = {
-  title: "Blog | Glamora",
-  description:
-    "Read skincare guides, hair care tips, wellness advice, and salon trends from the Glamora team.",
-};
-
 export default function BlogIndexPage({ searchParams }) {
+  const router = useRouter();
+  const query = (searchParams?.q || "").trim();
+  const [searchInput, setSearchInput] = useState(query);
+
   // sort newest first
-  const all = [...blogs].sort(
+  const allSorted = [...blogs].sort(
     (a, b) => new Date(b.publishedDate) - new Date(a.publishedDate)
   );
+
+  // --- filter by query (title, excerpt, author, category, tags)
+  const qLower = query.toLowerCase();
+  const all = qLower
+    ? allSorted.filter((p) => {
+        const haystack = [
+          p.title,
+          p.excerpt,
+          p.author,
+          p.category,
+          ...(p.tags || []),
+        ]
+          .filter(Boolean)
+          .join(" ")
+          .toLowerCase();
+        return haystack.includes(qLower);
+      })
+    : allSorted;
 
   // --- pagination
   const pageSize = 6;
@@ -30,7 +51,13 @@ export default function BlogIndexPage({ searchParams }) {
   const start = (page - 1) * pageSize;
   const items = all.slice(start, start + pageSize);
 
-  const pageHref = (n) => `/blogs${n > 1 ? `?page=${n}` : ""}`;
+  const pageHref = (n) => {
+    const sp = new URLSearchParams();
+    if (query) sp.set("q", query);
+    if (n > 1) sp.set("page", String(n));
+    const qs = sp.toString();
+    return `/blogs${qs ? `?${qs}` : ""}`;
+  };
 
   // build compact page list with ellipses
   const buildPages = (current, total) => {
@@ -42,13 +69,12 @@ export default function BlogIndexPage({ searchParams }) {
     if (current < total - 1) pages.push(current + 1);
     if (current < total - 2) pages.push("…");
     pages.push(total);
-    // dedupe/normalize
     return pages.filter((v, i, arr) => v !== arr[i - 1]);
   };
 
-  // --- sidebar data
+  // --- sidebar data (keep from full corpus for navigation)
   const categories = Array.from(
-    all.reduce((m, p) => {
+    allSorted.reduce((m, p) => {
       const prev = m.get(p.categorySlug) || {
         name: p.category,
         slug: p.categorySlug,
@@ -59,14 +85,31 @@ export default function BlogIndexPage({ searchParams }) {
     }, new Map())
   ).map(([, v]) => v);
 
-  const recent = all.slice(0, 5);
+  const recent = allSorted.slice(0, 5);
 
-  const tagCloud = Array.from(
-    all.reduce((set, p) => {
-      (p.tags || []).forEach((t) => set.add(t));
-      return set;
-    }, new Set())
-  ).slice(0, 20);
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const email = new FormData(form).get("email");
+    if (!email) {
+      toast.error("Please enter a valid email.");
+      return;
+    }
+    toast.success("Thanks for subscribing!");
+    form.reset();
+  };
+
+  // 🔎 Search submit -> push to /blogs?q=...
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    const nextQ = searchInput.trim();
+    if (!nextQ) {
+      // clear query param if input empty
+      router.push("/blogs");
+      return;
+    }
+    router.push(`/blogs?q=${encodeURIComponent(nextQ)}`);
+  };
 
   return (
     <main className="container py-4 py-lg-5">
@@ -85,155 +128,191 @@ export default function BlogIndexPage({ searchParams }) {
       <div className="row g-4 g-lg-5">
         {/* LEFT: posts */}
         <div className="col-12 col-lg-8">
-          {/* Grid of posts (2-up md, 3-up lg) */}
+          {/* Query heading */}
+          {query && (
+            <div className="mb-2 small text-secondary">
+              Showing results for <strong>“{query}”</strong> — {all.length}{" "}
+              match
+              {all.length === 1 ? "" : "es"}
+            </div>
+          )}
+
+          {/* Grid of posts */}
           <div className="row g-4">
-            {items.map((p, idx) => (
-              <div key={p.slug} className="col-12 col-md-6 col-lg-6">
-                <article className="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
-                  <div className="ratio ratio-16x9">
-                    <Image
-                      src={p.img}
-                      alt={p.title}
-                      fill
-                      sizes="(max-width: 992px) 100vw, 33vw"
-                      style={{ objectFit: "cover" }}
-                      priority={idx === 0}
-                    />
-                  </div>
-                  <div className="card-body d-flex flex-column p-3 p-md-4">
-                    <div className="d-flex flex-wrap align-items-center gap-2 mb-2">
-                      <span className="badge text-bg-light border">
-                        {p.category}
-                      </span>
-                      {p.featured && (
-                        <span className="badge text-bg-dark">Featured</span>
-                      )}
-                      <span className="ms-auto small text-secondary">
-                        {fmtDate(p.publishedDate)} • {p.readTime || "5 min"}
-                      </span>
-                    </div>
-
-                    <h2 className="h5 mb-2">
-                      <Link
-                        href={`/blogs/${p.slug}`}
-                        className="link-dark text-decoration-none"
-                      >
-                        {p.title}
-                      </Link>
-                    </h2>
-
-                    <p className="text-secondary mb-3 text-clamp-3">
-                      {p.excerpt}
-                    </p>
-
-                    <div className="mt-auto d-flex align-items-center gap-3">
-                      <div className="small">
-                        <i className="far fa-user-circle me-1" />
-                        {p.author}
-                      </div>
-                      <div className="vr" />
-                      <div className="small text-secondary">
-                        <i className="far fa-comment-dots me-1" />
-                        {String(p.comments).padStart(2, "0")} comments
-                      </div>
-
-                      <Link
-                        href={`/blogs/${p.slug}`}
-                        className="btn btn-sm btn-dark ms-auto"
-                      >
-                        Read more →
-                      </Link>
-                    </div>
-                  </div>
-                </article>
+            {items.length === 0 ? (
+              <div className="col-12">
+                <div className="card border-0 shadow-sm rounded-4 p-4">
+                  <div className="h5 mb-2">No results</div>
+                  <p className="mb-0 text-secondary">
+                    Try a different keyword or{" "}
+                    <Link href="/blogs" className="link-dark">
+                      view all posts
+                    </Link>
+                    .
+                  </p>
+                </div>
               </div>
-            ))}
+            ) : (
+              items.map((p, idx) => (
+                <div key={p.slug} className="col-12 col-md-6 col-lg-6">
+                  <article className="card border-0 shadow-sm rounded-4 overflow-hidden h-100">
+                    <div className="ratio ratio-16x9">
+                      <Image
+                        src={p.img}
+                        alt={p.title}
+                        fill
+                        sizes="(max-width: 992px) 100vw, 33vw"
+                        style={{ objectFit: "cover" }}
+                        priority={idx === 0}
+                      />
+                    </div>
+                    <div className="card-body d-flex flex-column p-3 p-md-4">
+                      <div className="d-flex flex-wrap align-items-center gap-2 mb-2">
+                        <span className="badge text-bg-light border">
+                          {p.category}
+                        </span>
+                        {p.featured && (
+                          <span className="badge text-bg-dark">Featured</span>
+                        )}
+                        <span className="ms-auto small text-secondary">
+                          {fmtDate(p.publishedDate)} • {p.readTime || "5 min"}
+                        </span>
+                      </div>
+
+                      <h2 className="h5 mb-2">
+                        <Link
+                          href={`/blogs/${p.slug}`}
+                          className="link-dark text-decoration-none"
+                        >
+                          {p.title}
+                        </Link>
+                      </h2>
+
+                      <p className="text-secondary mb-3 text-clamp-3">
+                        {p.excerpt}
+                      </p>
+
+                      <div className="mt-auto d-flex align-items-center gap-3">
+                        <div className="small">
+                          <i className="far fa-user-circle me-1" />
+                          {p.author}
+                        </div>
+                        <div className="vr" />
+                        <div className="small text-secondary">
+                          <i className="far fa-comment-dots me-1" />
+                          {String(p.comments).padStart(2, "0")} comments
+                        </div>
+
+                        <Link
+                          href={`/blogs/${p.slug}`}
+                          className="btn btn-sm btn-dark ms-auto"
+                        >
+                          Read more →
+                        </Link>
+                      </div>
+                    </div>
+                  </article>
+                </div>
+              ))
+            )}
           </div>
 
-          {/* Pagination (compact with ellipses) */}
-          {/* Pagination (compact with ellipses) */}
-          <nav className="mt-4" aria-label="Blog pagination">
-            <ul className="pagination">
-              {/* Prev */}
-              <li className={`page-item ${page <= 1 ? "disabled" : ""}`}>
-                {page <= 1 ? (
-                  <span className="page-link" aria-label="Previous">
-                    <FiChevronLeft size={20} />
-                  </span>
-                ) : (
-                  <Link
-                    href={pageHref(page - 1)}
-                    className="page-link"
-                    aria-label="Previous"
-                  >
-                    <FiChevronLeft size={20} />
-                  </Link>
-                )}
-              </li>
+          {/* Pagination */}
+          {items.length > 0 && (
+            <nav className="mt-4" aria-label="Blog pagination">
+              <ul className="pagination">
+                {/* Prev */}
+                <li className={`page-item ${page <= 1 ? "disabled" : ""}`}>
+                  {page <= 1 ? (
+                    <span className="page-link" aria-label="Previous">
+                      <FiChevronLeft size={20} />
+                    </span>
+                  ) : (
+                    <Link
+                      href={pageHref(page - 1)}
+                      className="page-link"
+                      aria-label="Previous"
+                    >
+                      <FiChevronLeft size={20} />
+                    </Link>
+                  )}
+                </li>
 
-              {buildPages(page, totalPages).map((n, i) =>
-                n === "…" ? (
-                  <li key={`dots-${i}`} className="page-item disabled">
-                    <span className="page-link">…</span>
-                  </li>
-                ) : (
-                  <li
-                    key={n}
-                    className={`page-item ${n === page ? "active" : ""}`}
-                  >
-                    {n === page ? (
-                      <span className="page-link">{n}</span>
-                    ) : (
-                      <Link href={pageHref(n)} className="page-link">
-                        {n}
-                      </Link>
-                    )}
-                  </li>
-                )
-              )}
-
-              {/* Next */}
-              <li
-                className={`page-item ${page >= totalPages ? "disabled" : ""}`}
-              >
-                {page >= totalPages ? (
-                  <span className="page-link" aria-label="Next">
-                    <FiChevronRight size={20} />
-                  </span>
-                ) : (
-                  <Link
-                    href={pageHref(page + 1)}
-                    className="page-link"
-                    aria-label="Next"
-                  >
-                    <FiChevronRight size={20} />
-                  </Link>
+                {buildPages(page, totalPages).map((n, i) =>
+                  n === "…" ? (
+                    <li key={`dots-${i}`} className="page-item disabled">
+                      <span className="page-link">…</span>
+                    </li>
+                  ) : (
+                    <li
+                      key={n}
+                      className={`page-item ${n === page ? "active" : ""}`}
+                    >
+                      {n === page ? (
+                        <span className="page-link">{n}</span>
+                      ) : (
+                        <Link href={pageHref(n)} className="page-link">
+                          {n}
+                        </Link>
+                      )}
+                    </li>
+                  )
                 )}
-              </li>
-            </ul>
-          </nav>
+
+                {/* Next */}
+                <li
+                  className={`page-item ${
+                    page >= totalPages ? "disabled" : ""
+                  }`}
+                >
+                  {page >= totalPages ? (
+                    <span className="page-link" aria-label="Next">
+                      <FiChevronRight size={20} />
+                    </span>
+                  ) : (
+                    <Link
+                      href={pageHref(page + 1)}
+                      className="page-link"
+                      aria-label="Next"
+                    >
+                      <FiChevronRight size={20} />
+                    </Link>
+                  )}
+                </li>
+              </ul>
+            </nav>
+          )}
         </div>
 
-        {/* RIGHT: sidebar widgets (unchanged) */}
+        {/* RIGHT: sidebar */}
         <aside className="col-12 col-lg-4">
           <div className="sticky-lg-top" style={{ top: "88px" }}>
             {/* Search */}
             <div className="card border-0 shadow-sm rounded-4 mb-3">
               <div className="card-body">
                 <h5 className="card-title mb-3">Search</h5>
-                <form action="/blogs/search" method="GET">
+                <form onSubmit={handleSearchSubmit}>
                   <div className="input-group">
                     <input
                       name="q"
                       type="search"
                       className="form-control"
                       placeholder="Search articles..."
+                      value={searchInput}
+                      onChange={(e) => setSearchInput(e.target.value)}
                     />
                     <button className="btn btn-dark" type="submit">
                       <i className="fa fa-search" aria-hidden="true" />
                     </button>
                   </div>
                 </form>
+                {query && (
+                  <div className="small mt-2">
+                    <Link href="/blogs" className="text-decoration-none">
+                      Clear search
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -301,26 +380,6 @@ export default function BlogIndexPage({ searchParams }) {
               </div>
             </div>
 
-            {/* Tag cloud */}
-            {tagCloud.length > 0 && (
-              <div className="card border-0 shadow-sm rounded-4 mb-3">
-                <div className="card-body">
-                  <h5 className="card-title mb-3">Tags</h5>
-                  <div className="d-flex flex-wrap gap-2">
-                    {tagCloud.map((t) => (
-                      <Link
-                        key={t}
-                        href={`/blogs/tag/${t}`}
-                        className="btn btn-sm btn-outline-secondary"
-                      >
-                        #{t}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
-
             {/* Newsletter */}
             <div className="card border-0 shadow-sm rounded-4">
               <div className="card-body">
@@ -329,7 +388,7 @@ export default function BlogIndexPage({ searchParams }) {
                   Join our newsletter for skincare routines, hair guides, and
                   offers.
                 </p>
-                <form action="/api/newsletter" method="POST">
+                <form onSubmit={handleNewsletterSubmit} method="post">
                   <div className="mb-2">
                     <input
                       name="email"

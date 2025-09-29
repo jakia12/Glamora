@@ -29,14 +29,14 @@ export default function ServicesSection() {
           <div className="category-title">
             <span className="bg-text danR">Category</span>
             <h4>
-              <Link href="/service-details " className="Mont">
+              <Link href="/services " className="Mont">
                 Nail Polish
               </Link>
             </h4>
           </div>
           <p>Bright colors, smooth finish, lasting shine.</p>
-          <Link href="/service-details" className="read-more">
-            read more <i className="fas fa-long-arrow-alt-right"></i>
+          <Link href="/services" className="read-more">
+            Learn More <i className="fas fa-long-arrow-alt-right"></i>
           </Link>
         </div>
 
@@ -50,14 +50,14 @@ export default function ServicesSection() {
           <div className="category-title">
             <span className="bg-text danR">Category</span>
             <h4>
-              <Link href="/service-details" className="Mont">
+              <Link href="/services" className="Mont">
                 Brow Polish
               </Link>
             </h4>
           </div>
           <p>Perfectly shaped brows, naturally defined.</p>
-          <Link href="/service-details" className="read-more">
-            read more <i className="fas fa-long-arrow-alt-right"></i>
+          <Link href="/services" className="read-more">
+            Learn More <i className="fas fa-long-arrow-alt-right"></i>
           </Link>
         </div>
 
@@ -71,14 +71,14 @@ export default function ServicesSection() {
           <div className="category-title">
             <span className="bg-text danR">Category</span>
             <h4>
-              <Link href="/service-details" className="Mont">
+              <Link href="/services" className="Mont">
                 Hair Dresser
               </Link>
             </h4>
           </div>
           <p>Trendy cuts, flawless styles, everyday glam.</p>
-          <Link href="/service-details" className="read-more">
-            read more <i className="fas fa-long-arrow-alt-right"></i>
+          <Link href="/services" className="read-more">
+            Learn More <i className="fas fa-long-arrow-alt-right"></i>
           </Link>
         </div>
 
@@ -92,14 +92,14 @@ export default function ServicesSection() {
           <div className="category-title">
             <span className="bg-text danR">Category</span>
             <h4>
-              <Link href="/service-details" className="Mont">
+              <Link href="/services" className="Mont">
                 Foot Massage
               </Link>
             </h4>
           </div>
           <p>Relax, refresh, and feel light on your feet.</p>
-          <Link href="/service-details" className="read-more">
-            read more <i className="fas fa-long-arrow-alt-right"></i>
+          <Link href="/services" className="read-more">
+            Learn More <i className="fas fa-long-arrow-alt-right"></i>
           </Link>
         </div>
 
@@ -113,14 +113,14 @@ export default function ServicesSection() {
           <div className="category-title">
             <span className="bg-text danR">Category</span>
             <h4>
-              <Link href="/service-details" className="Mont">
+              <Link href="/services" className="Mont">
                 Cosmetics
               </Link>
             </h4>
           </div>
           <p>Glow naturally with premium beauty essentials.</p>
-          <Link href="/service-details" className="read-more">
-            read more <i className="fas fa-long-arrow-alt-right"></i>
+          <Link href="/services" className="read-more">
+            Learn More <i className="fas fa-long-arrow-alt-right"></i>
           </Link>
         </div>
       </div>

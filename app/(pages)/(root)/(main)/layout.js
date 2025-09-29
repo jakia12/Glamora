@@ -4,6 +4,7 @@ import "../../../globals.css";
 
 import Footer from "@/components/shared/Footer";
 import Header from "@/components/shared/Header";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -121,6 +122,20 @@ export default function RootLayout({ children }) {
         <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
           strategy="afterInteractive"
+        />
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            duration: 4000,
+            style: {
+              maxWidth: "min(92vw, 300px)", // ⬅️ wider toasts, but not past viewport
+              width: "100%",
+              whiteSpace: "pre-wrap", // nicer wrapping for long messages
+              wordBreak: "break-word",
+              fontSize: "17px",
+            },
+            success: { iconTheme: { primary: "#22c55e", secondary: "#fff" } },
+          }}
         />
       </body>
     </html>

@@ -1,3 +1,4 @@
+import { services } from "@/data/services";
 import Link from "next/link";
 
 const popularServices = [
@@ -36,12 +37,15 @@ export default function PopularServices() {
 
               {/* Service Grid */}
               <div className="row">
-                {popularServices.map((s, i) => (
+                {services.map((s, i) => (
                   <div
                     key={i}
                     className="col-xl-4 col-lg-6 col-sm-4 col-6 col-small"
                   >
-                    <Link href={s.href} className="popular-service-item">
+                    <Link
+                      href={`/services/${s.slug}`}
+                      className="popular-service-item"
+                    >
                       <i className={s.icon}></i>
                       <h5>{s.title}</h5>
                     </Link>
