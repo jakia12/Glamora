@@ -215,20 +215,27 @@ export default function BlogPostPage({ params }) {
         {/* SIDEBAR */}
         <aside className="col-12 col-lg-4">
           <div className="sticky-lg-top" style={{ top: "88px" }}>
-            {/* Search (server-safe GET form) */}
+            {/* Search (GET to /blogs?q=... so index page filters) */}
             <div className="card border-0 shadow-sm rounded-4 mb-3">
               <div className="card-body">
                 <h5 className="card-title mb-3">Search</h5>
-                <form action="/blogs/search" method="GET">
+                <form
+                  action="/blogs"
+                  method="GET"
+                  role="search"
+                  aria-label="Site blog search"
+                >
                   <div className="input-group">
                     <input
                       name="q"
                       type="search"
                       className="form-control"
                       placeholder="Search articles..."
+                      aria-label="Search blog posts"
                     />
                     <button className="btn btn-dark" type="submit">
                       <i className="fa fa-search" aria-hidden="true" />
+                      <span className="visually-hidden">Search</span>
                     </button>
                   </div>
                 </form>
@@ -319,7 +326,7 @@ export default function BlogPostPage({ params }) {
               </div>
             )} */}
 
-            {/* Newsletter (POST, no client JS needed) */}
+            {/* Newsletter (POST, server-safe) */}
             <div className="card border-0 shadow-sm rounded-4">
               <div className="card-body">
                 <h5 className="card-title mb-2">Get beauty tips weekly</h5>
