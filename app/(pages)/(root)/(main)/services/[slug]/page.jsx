@@ -46,7 +46,7 @@ export default function ServiceDetailsPage({ params }) {
   return (
     <main className="container">
       {/* BREADCRUMB */}
-      <nav className="small text-muted pt-3" aria-label="breadcrumb">
+      {/* <nav className="small text-muted pt-3" aria-label="breadcrumb">
         <ol className="breadcrumb mb-0">
           <li className="breadcrumb-item">
             <Link href="/">Home</Link>
@@ -58,10 +58,10 @@ export default function ServiceDetailsPage({ params }) {
             {data.title}
           </li>
         </ol>
-      </nav>
+      </nav> */}
 
       {/* HERO */}
-      <section className="section">
+      <section className="section mt-[70px]" style={{ marginTop: "70px" }}>
         <div className="row  g-4 g-lg-5">
           <div className="col-12 col-lg-8">
             <div className="ratio ratio-16x9 rounded-4 shadow-sm overflow-hidden">

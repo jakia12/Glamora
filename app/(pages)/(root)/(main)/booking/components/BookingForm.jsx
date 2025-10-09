@@ -585,14 +585,13 @@ export default function BookingForm({ serviceSlug } = {}) {
                   <div className="col-12">
                     <div className="form-check">
                       <input
-                        className={`form-check-input tiny-check ${
-                          showErr("agree") ? "is-invalid" : ""
-                        }`}
+                        className={` ${showErr("agree") ? "is-invalid" : ""}`}
                         type="checkbox"
                         id="agree"
                         checked={agree}
                         onChange={(e) => setAgree(e.target.checked)}
                         aria-invalid={!!showErr("agree")}
+                        style={{ width: "20px", height: "20px" }}
                       />
                       <label
                         className="form-check-label tiny-label"

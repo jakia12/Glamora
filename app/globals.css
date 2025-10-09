@@ -10807,6 +10807,10 @@ h2 {
 .tiny-label {
   margin-left: 0.4rem;
 }
+.card-body ul {
+  padding-left: 0;
+  margin: 0;
+}
 @media (max-width: 768px) {
   .hidd {
     display: none !important;

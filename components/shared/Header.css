@@ -1,0 +1,57 @@
+/* Hide default burger button (we use our own) */
+/* Position and show the default burger on mobile */
+.bm-burger-button {
+  position: fixed;
+  width: 28px;
+  height: 22px;
+  right: 16px;
+  top: 18px;
+  display: block;
+  z-index: 60;
+}
+
+/* Hide burger on md and up (match your utility breakpoints if using Tailwind 768px) */
+@media (min-width: 768px) {
+  .bm-burger-button {
+    display: none;
+  }
+}
+
+/* Overlay */
+.bm-overlay {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Drawer panel */
+.bm-menu {
+  background: #d6b981; /* your drawer bg */
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  overflow: hidden !important; /* avoid double scrollbars */
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+/* Burger bars */
+.bm-burger-bars {
+  background: #111 !important;
+}
+
+.bm-burger-bars-hover {
+  background: #00c5c4 !important;
+}
+
+/* Items wrapper */
+.bm-item-list {
+  color: #111;
+  margin-top: 0.25rem;
+}
+
+/* Cross (close) */
+.bm-cross-btn {
+  width: 40px !important;
+  height: 40px !important;
+}
+
+.bm-cross {
+  background: currentColor !important; /* uses text color from button */
+}

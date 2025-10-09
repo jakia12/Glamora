@@ -88,7 +88,7 @@ export default function BlogPostPage({ params }) {
   return (
     <main className="container py-4 py-lg-5">
       {/* BREADCRUMB */}
-      <nav aria-label="breadcrumb" className="mb-3 small">
+      {/* <nav aria-label="breadcrumb" className="mb-3 small">
         <ol className="breadcrumb mb-0">
           <li className="breadcrumb-item">
             <Link href="/">Home</Link>
@@ -100,7 +100,7 @@ export default function BlogPostPage({ params }) {
             {post.title}
           </li>
         </ol>
-      </nav>
+      </nav> */}
 
       <div className="row g-4 g-lg-5">
         {/* MAIN */}

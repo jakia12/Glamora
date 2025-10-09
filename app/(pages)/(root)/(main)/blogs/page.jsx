@@ -3,7 +3,7 @@
 import { blogs } from "@/data/blogs";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
@@ -16,9 +16,10 @@ const fmtDate = (iso) =>
     day: "numeric",
   });
 
-export default function BlogIndexPage({ searchParams }) {
+export default function BlogIndexPage() {
   const router = useRouter();
-  const query = (searchParams?.q || "").trim();
+  const searchParams = useSearchParams();
+  const query = (searchParams?.get("q") || "").trim();
   const [searchInput, setSearchInput] = useState(query);
 
   // sort newest first
@@ -46,7 +47,7 @@ export default function BlogIndexPage({ searchParams }) {
 
   // --- pagination
   const pageSize = 6;
-  const page = Math.max(1, Number(searchParams?.page || 1));
+  const page = Math.max(1, Number(searchParams?.get("page") || 1));
   const totalPages = Math.max(1, Math.ceil(all.length / pageSize));
   const start = (page - 1) * pageSize;
   const items = all.slice(start, start + pageSize);
@@ -114,7 +115,7 @@ export default function BlogIndexPage({ searchParams }) {
   return (
     <main className="container py-4 py-lg-5">
       {/* Breadcrumb */}
-      <nav aria-label="breadcrumb" className="mb-3 small">
+      {/* <nav aria-label="breadcrumb" className="mb-3 small">
         <ol className="breadcrumb mb-0">
           <li className="breadcrumb-item">
             <Link href="/">Home</Link>
@@ -123,7 +124,7 @@ export default function BlogIndexPage({ searchParams }) {
             Blog
           </li>
         </ol>
-      </nav>
+      </nav> */}
 
       <div className="row g-4 g-lg-5">
         {/* LEFT: posts */}
@@ -327,7 +328,7 @@ export default function BlogIndexPage({ searchParams }) {
                       className="d-flex align-items-center justify-content-between mb-2"
                     >
                       <Link
-                        href={`/blogs/category/${c.slug}`}
+                        href={`/blogs/${c.slug}`}
                         className="link-dark text-decoration-none"
                       >
                         {c.name}
