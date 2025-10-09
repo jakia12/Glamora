@@ -4,7 +4,7 @@ import { blogs } from "@/data/blogs";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import toast from "react-hot-toast";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 
@@ -16,7 +16,7 @@ const fmtDate = (iso) =>
     day: "numeric",
   });
 
-export default function BlogIndexPage() {
+function BlogIndexInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const query = (searchParams?.get("q") || "").trim();
@@ -409,5 +409,13 @@ export default function BlogIndexPage() {
         </aside>
       </div>
     </main>
+  );
+}
+
+export default function BlogIndexPage() {
+  return (
+    <Suspense fallback={null}>
+      <BlogIndexInner />
+    </Suspense>
   );
 }

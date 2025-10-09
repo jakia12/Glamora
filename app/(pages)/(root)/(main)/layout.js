@@ -17,6 +17,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  ),
   title: "Glamora – Beauty & Wellness",
   description: "Discover luxury salon & spa services with Glamora.",
   icons: {
@@ -27,11 +30,11 @@ export const metadata = {
   openGraph: {
     title: "Glamora – Beauty & Wellness",
     description: "Indulge in premium beauty, spa, and salon experiences.",
-    url: "https://yourdomain.com",
+    url: "/",
     siteName: "Glamora",
     images: [
       {
-        url: "/images/openfav.jpg", // absolute URL to your image
+        url: "/images/openfav.jpg",
         width: 1200,
         height: 630,
         alt: "Glamora Spa & Salon Preview",
